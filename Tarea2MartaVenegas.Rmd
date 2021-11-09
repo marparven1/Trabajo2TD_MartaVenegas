@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 
 ```{r  message=FALSE }
 source("ScriptsNecesarios/teoriadecision_funciones_multicriterio.R")
-source("ScriptsNecesarios/teoriadecision_funciones_multicriterio_diagram.R")
+#source("ScriptsNecesarios/teoriadecision_funciones_multicriterio_diagram.R")
 source("ScriptsNecesarios/teoriadecision_funciones_multicriterio_utiles.R")
 ```
 ## Enunciado
