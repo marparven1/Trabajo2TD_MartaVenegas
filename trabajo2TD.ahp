@@ -1,0 +1,46 @@
+Version: 2.0
+Alternatives: &alternatives
+  Moto:
+  PatinElectrico:
+  Coche:
+Goal:
+  name: Decidir un medio de transporte en Madrid
+  preferences:
+    pairwise:
+      - [Seguridad, CondicionesViaje,9]
+      - [Seguridad, Precio,7]
+      - [CondicionesViaje , Precio ,3]
+  children:
+    Seguridad:
+      preferences:
+        pairwise:
+          - [Moto,PatinElectrico,1/3]
+          - [Moto,Coche,1/6]
+          - [PatinElectrico,Coche,1/5]
+      children: *alternatives 
+    CondicionesViaje:
+      preferences:
+        pairwise:
+          - [TiempoTrayecto,Meteorologia,7]
+      children:
+        TiempoTrayecto:
+          preferences:
+            pairwise:
+              - [Moto,PatinElectrico,7]
+              - [Moto,Coche,2]
+              - [PatinElectrico,Coche,1/5]
+          children: *alternatives
+        Meteorologia:
+          preferences:
+            pairwise:
+              - [Moto,PatinElectrico,1]
+              - [Moto,Coche,1/7]
+              - [PatinElectrico,Coche,1/7]
+          children: *alternatives          
+    Precio:
+      preferences:
+        pairwise:
+          - [Moto,PatinElectrico,1/3]
+          - [Moto,Coche,1/7]
+          - [PatinElectrico,Coche,1/5]
+      children: *alternatives 

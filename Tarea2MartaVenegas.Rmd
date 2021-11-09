@@ -13,11 +13,15 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 ```
 
-
-
+```{r  message=FALSE }
+source("ScriptsNecesarios/teoriadecision_funciones_multicriterio.R")
+source("ScriptsNecesarios/teoriadecision_funciones_multicriterio_diagram.R")
+source("ScriptsNecesarios/teoriadecision_funciones_multicriterio_utiles.R")
+```
+## Enunciado
 
 Luis hace su último año de residencia de anestesia en el hospital General Universitario de Ciudad Real, pero tiene que ir un mes a trabajar en el hospital Asepeyo en un pueblo a las afueras de Madrid, por lo que va a vivirá durante un mes en Madrid Capital, pero debe ir y volver a Ciudad Real 3 veces para hacer guardias.
 
@@ -89,6 +93,38 @@ Tiempo | Moto  | Patín   | Coche
 Moto		 |		1      | 		7     |    2    |
 Patín		 |	  	1/7	  |		1	    |    1/5    |
 Coche	 |		1/2	  |		 5    |     1   |
+
+## Solución con paquete AHP
+
+
+
+```{r}
+#devtools::install_github("gluc/ahp", build_vignettes = TRUE)
+# ahp::RunGUI()
+library(ahp)
+dtMio = Load("trabajo2TD.ahp")
+```
+
+```{r message=FALSE}
+Visualize(dtMio)
+```
+
+
+### Pesos globales. Criterios/Subcriterios y Alternativas
+
+```{r}
+ahp::Calculate(dtMio)
+ahp::AnalyzeTable(dtMio, sort="orig",variable="priority")
+```
+### Tabla para la interpretación
+```{r}
+ahp::AnalyzeTable(dtMio, sort="orig")
+```
+
+
+
+
+
 
 
 
