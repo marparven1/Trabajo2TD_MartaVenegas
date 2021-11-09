@@ -1,0 +1,93 @@
+---
+title: "Trabajo 2. Decisión Multicriterio"
+subtitle: "Teoría de la decisión"
+author: "Marta Venegas Pardo"
+date: "11/9/2021"
+output: 
+  prettydoc::html_pretty:
+    theme: leonids
+    highlight: github
+    toc: true
+    toc_depth: 4
+    number_section: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+Luis hace su último año de residencia de anestesia en el hospital General Universitario de Ciudad Real, pero tiene que ir un mes a trabajar en el hospital Asepeyo en un pueblo a las afueras de Madrid, por lo que va a vivirá durante un mes en Madrid Capital, pero debe ir y volver a Ciudad Real 3 veces para hacer guardias.
+
+
+Debe elegir un medio de transporte entre tres posibles alternativas:
+
+- Alquilar una moto en Madrid para ese mes, que sería un total de 220$ más gasolina.
+
+- Compar un patinete eléctrico (200 euros) y sacar un bono de metro que le permita ir y volver al hospital desde el centro por 28 euros.
+
+Para estas dos opciones, necesitaría sacar un abono de 10 viajes de Renfe para ir y volver a Ciudad Real, por un importe de 195 euros.
+
+- Llevar su coche, con el que puede ir al hospital desde el centro y a Ciudad Real cuando necesite hacer las guardias. Si escoge llevar su coche, tendría que alquilar una plaza de garaje por 200 euros, además de pagar la gasolina.
+
+Para tomar una decisión, Luis ha considerado tres criterios:
+
+- Seguridad
+- Precio
+- Condiciones de viaje
+	- Tiempo invertido en el/los trayecto
+	- Meteorología (frío/lluvia/nieve)
+  
+
+Dentro de las condiciones de viaje, considera que es importante considerar el tiempo que tardaría en llegar al hospital en función del medio de transporte elegido y las condiciones meteorológicas, que le harían tener que cambiar su itinerario.
+
+-   Matriz comparación entre Criterios
+
+|   Criterios    | Seguridad | Condiciones  | Precio  |
+|----------------|-----------|--------------|---------|
+| Seguridad      |     1     |       9      |     7   |
+| Condiciones    |    1/9         |        1             |     3      |
+| Precio         |        1/7     |        1/3           |      1    |
+
+
+- Matriz de ponderación de importancias dentro del criterio CONDICIONES DEL VIAJE
+
+|  Condiciones | Tiempo     | Meteorología | 
+|-------------------|---------------|-------------------|
+| Tiempo          |       1         |         7            |  
+| Meteorología |        1/7     |        1             |    
+
+
+-   Matriz comparación entre Alternativas según Criterios
+
+
+Seguridad  | Moto | Patín | Coche |
+|--------------|---------|---------|----------|
+Moto		 		|		1     |		1/3  |    1/7
+Patín			   |	  	3		 |		1     |    1/5
+Coche		   |		7		 |		 5    |     1
+
+
+Precio        | Moto | Patín | Coche |
+|--------------|---------|---------|----------|
+Moto		 		|		1     |		1/3  |    5
+Patín			   |	  	3		 |		1     |    7
+Coche		   |		1/5	 |	   1/7  |     1
+
+-   Matriz comparación entre Alternativas según Subcriterios
+
+Meteorología  | Moto | Patín | Coche |
+|--------------|---------|---------|----------|
+Moto		 		|		1     |		1     |    1/7
+Patín			   |	  	1		 |		1     |    1/7
+Coche		   |		7     |	   7     |     1
+
+Tiempo | Moto  | Patín   | Coche
+|----------|---------|----------|----------|
+Moto		 |		1      | 		7     |    2
+Patín		 |	  	1/7	  |		1	    |    1/5
+Coche	 |		1/2	  |		 5    |     1
+
+
