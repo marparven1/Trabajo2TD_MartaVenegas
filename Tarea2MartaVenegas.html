@@ -154,6 +154,11 @@ a.sourceLine {
 <li><a href="#pesos-globales.-criteriossubcriterios-y-alternativas">Pesos globales. Criterios/Subcriterios y Alternativas</a></li>
 <li><a href="#tabla-para-la-interpretación">Tabla para la interpretación</a></li>
 </ul></li>
+<li><a href="#versiones">VERSIONES</a>
+<ul>
+<li><a href="#matriz-de-comparación-entre-criterios">Matriz de comparación entre criterios</a></li>
+<li><a href="#matriz-de-comparación-entre-alternativas-según-criterios">Matriz de comparación entre alternativas según criterios</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -208,7 +213,7 @@ a.sourceLine {
 <td>Condiciones</td>
 <td>1/9</td>
 <td>1</td>
-<td>3</td>
+<td>2</td>
 </tr>
 <tr class="odd">
 <td>Precio</td>
@@ -225,13 +230,13 @@ a.sourceLine {
 <thead>
 <tr class="header">
 <th>Condiciones</th>
-<th>Tiempo</th>
+<th>Tiempo(tray)</th>
 <th>Meteorología</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Tiempo</td>
+<td>Tiempo(tray)</td>
 <td>1</td>
 <td>7</td>
 </tr>
@@ -270,7 +275,7 @@ a.sourceLine {
 <tr class="odd">
 <td>Coche</td>
 <td>7</td>
-<td>5</td>
+<td>5 (4*)</td>
 <td>1</td>
 </tr>
 </tbody>
@@ -289,18 +294,18 @@ a.sourceLine {
 <td>Moto</td>
 <td>1</td>
 <td>1/3</td>
-<td>5</td>
+<td>7</td>
 </tr>
 <tr class="even">
 <td>Patín</td>
 <td>3</td>
 <td>1</td>
-<td>7</td>
+<td>5</td>
 </tr>
 <tr class="odd">
 <td>Coche</td>
-<td>1/5</td>
 <td>1/7</td>
+<td>1/5</td>
 <td>1</td>
 </tr>
 </tbody>
@@ -394,8 +399,8 @@ a.sourceLine {
 ## [1] &quot;Node$fields will be deprecated in the next release. Please use Node$attributes instead.&quot;
 ## [1] &quot;Node$fields will be deprecated in the next release. Please use Node$attributes instead.&quot;
 ## [1] &quot;Node$fields will be deprecated in the next release. Please use Node$attributes instead.&quot;</code></pre>
-<div id="htmlwidget-eea03d3e38ee03a010d1" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eea03d3e38ee03a010d1">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"TB\"]\n\n\n\n  \"1\" [label = \"Decidir un medio de transporte en Madrid\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"2\" [label = \"Seguridad\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"3\" [label = \"CondicionesViaje\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"4\" [label = \"TiempoTrayecto\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"5\" [label = \"Meteorologia\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"6\" [label = \"Precio\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"7\" [label = \"Alternatives\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"thistle4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"\", fillcolor = \"#D8BFD8\"] \n  \"8\" [label = \"Moto\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"thistle4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"\", fillcolor = \"#D8BFD8\"] \n  \"9\" [label = \"PatinElectrico\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"thistle4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"\", fillcolor = \"#D8BFD8\"] \n  \"10\" [label = \"Coche\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"thistle4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"\", fillcolor = \"#D8BFD8\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"1\"->\"3\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"1\"->\"6\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"3\"->\"5\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"2\"->\"7\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"4\"->\"7\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"5\"->\"7\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"6\"->\"7\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"7\"->\"8\" [penwidth = \"2\", color = \"grey35\", penwidth = \"2\", dir = \"none\"] \n\"7\"->\"9\" [dir = \"none\", color = \"grey35\", penwidth = \"2\", dir = \"none\"] \n\"7\"->\"10\" [dir = \"none\", color = \"grey35\", penwidth = \"2\", dir = \"none\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4f3463c885051f97f60c" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4f3463c885051f97f60c">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"TB\"]\n\n\n\n  \"1\" [label = \"Decidir un medio de transporte en Madrid\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"2\" [label = \"Seguridad\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"3\" [label = \"CondicionesViaje\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"4\" [label = \"TiempoTrayecto\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"5\" [label = \"Meteorologia\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"6\" [label = \"Precio\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"honeydew4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"black\", fillcolor = \"#F0FFF0\"] \n  \"7\" [label = \"Alternatives\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"thistle4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"\", fillcolor = \"#D8BFD8\"] \n  \"8\" [label = \"Moto\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"thistle4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"\", fillcolor = \"#D8BFD8\"] \n  \"9\" [label = \"PatinElectrico\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"thistle4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"\", fillcolor = \"#D8BFD8\"] \n  \"10\" [label = \"Coche\", tooltip = \"\", style = \"filled,rounded\", shape = \"box\", color = \"thistle4\", penwidth = \"4\", fontname = \"helvetica\", fontcolor = \"\", fillcolor = \"#D8BFD8\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"1\"->\"3\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"1\"->\"6\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"3\"->\"5\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"2\"->\"7\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"4\"->\"7\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"5\"->\"7\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"6\"->\"7\" [arrowhead = \"vee\", color = \"grey35\", penwidth = \"2\", penwidth = \"2\"] \n\"7\"->\"8\" [penwidth = \"2\", color = \"grey35\", penwidth = \"2\", dir = \"none\"] \n\"7\"->\"9\" [dir = \"none\", color = \"grey35\", penwidth = \"2\", dir = \"none\"] \n\"7\"->\"10\" [dir = \"none\", color = \"grey35\", penwidth = \"2\", dir = \"none\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <div id="pesos-globales.-criteriossubcriterios-y-alternativas" class="section level3">
 <h3>Pesos globales. Criterios/Subcriterios y Alternativas</h3>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ahp<span class="sc">::</span><span class="fu">Calculate</span>(dtMio)</span>
@@ -440,7 +445,7 @@ Inconsistency
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #8b7b8b"></span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #eed8ae"> <i class="glyphicon glyphicon-exclamation-sign"></i> 19.6% </span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #eed8ae"> <i class></i> 9.5% </span>
 </td>
 </tr>
 <tr>
@@ -448,7 +453,7 @@ Inconsistency
 <span style="white-space: nowrap; text-align: left; float: left; font-weight: bold; text-indent: 1em">Seguridad </span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cfd8cf">79.0%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ced8ce">79.6%</span>
 </td>
 <td style="text-align:right;">
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f0eef0">8.8%</span>
@@ -460,7 +465,7 @@ Inconsistency
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #8b7b8b">71.7%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #efdcb6"> <i class></i> 9.0% </span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #efdab2"> <i class></i> 9.0% </span>
 </td>
 </tr>
 <tr>
@@ -468,7 +473,7 @@ Inconsistency
 <span style="white-space: nowrap; text-align: left; float: left; font-weight: bold; text-indent: 1em">CondicionesViaje </span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fafbfa">13.8%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcfcfc">12.1%</span>
 </td>
 <td style="text-align:right;">
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #8b7b8b"></span>
@@ -500,7 +505,7 @@ Inconsistency
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bdb4bd">33.3%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcf9f4"> <i class></i> 1.3% </span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcf9f3"> <i class></i> 1.3% </span>
 </td>
 </tr>
 <tr>
@@ -508,7 +513,7 @@ Inconsistency
 <span style="white-space: nowrap; text-align: left; float: left; font-weight: bold; text-indent: 2em">Meteorologia </span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fbfcfb">12.5%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcfcfc">12.5%</span>
 </td>
 <td style="text-align:right;">
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #eeecee">11.1%</span>
@@ -528,7 +533,7 @@ Inconsistency
 <span style="white-space: nowrap; text-align: left; float: left; font-weight: bold; text-indent: 1em">Precio </span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">7.2%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">8.3%</span>
 </td>
 <td style="text-align:right;">
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2f0f2">8.1%</span>
@@ -540,7 +545,7 @@ Inconsistency
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #8b7b8b">73.1%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f4e6cc"> <i class></i> 6.2% </span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f3e5ca"> <i class></i> 6.2% </span>
 </td>
 </tr>
 </tbody>
@@ -580,16 +585,16 @@ Inconsistency
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c1cdc1">100.0%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e5e1e5">14.9%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e6e3e6">14.1%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e0dce0">17.8%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e0dbe0">18.0%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #8b7b8b">67.3%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #8b7b8b">67.9%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #eed8ae"> <i class="glyphicon glyphicon-exclamation-sign"></i> 19.6% </span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #eed8ae"> <i class></i> 9.5% </span>
 </td>
 </tr>
 <tr>
@@ -597,19 +602,19 @@ Inconsistency
 <span style="white-space: nowrap; text-align: left; float: left; font-weight: bold; text-indent: 1em">Seguridad </span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ced7ce">79.0%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cdd7cd">79.6%</span>
 </td>
 <td style="text-align:right;">
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f3f1f3">7.0%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e4e0e4">15.4%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e4e0e4">15.5%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #9d8f9d">56.7%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #9d8f9d">57.1%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #efdcb6"> <i class></i> 9.0% </span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #efdab2"> <i class></i> 9.0% </span>
 </td>
 </tr>
 <tr>
@@ -617,16 +622,16 @@ Inconsistency
 <span style="white-space: nowrap; text-align: left; float: left; font-weight: bold; text-indent: 1em">CondicionesViaje </span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f7f8f7">13.8%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f8f9f8">12.1%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2f0f2">7.3%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f3f2f3">6.4%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdfcfd">1.1%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdfdfd">1.0%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f5f4f5">5.4%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f6f5f6">4.7%</span>
 </td>
 <td style="text-align:right;">
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"> <i class></i> 0.0% </span>
@@ -637,19 +642,19 @@ Inconsistency
 <span style="white-space: nowrap; text-align: left; float: left; font-weight: bold; text-indent: 2em">TiempoTrayecto </span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f8f9f8">12.0%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f9faf9">10.6%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2f1f2">7.1%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f4f2f4">6.3%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdfdfd">0.9%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdfdfd">0.8%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f8f7f8">4.0%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f8f8f8">3.5%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcf9f4"> <i class></i> 1.3% </span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcf9f3"> <i class></i> 1.3% </span>
 </td>
 </tr>
 <tr>
@@ -657,7 +662,7 @@ Inconsistency
 <span style="white-space: nowrap; text-align: left; float: left; font-weight: bold; text-indent: 2em">Meteorologia </span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">1.7%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">1.5%</span>
 </td>
 <td style="text-align:right;">
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fefefe">0.2%</span>
@@ -666,7 +671,7 @@ Inconsistency
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fefefe">0.2%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcfcfc">1.3%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcfcfc">1.2%</span>
 </td>
 <td style="text-align:right;">
 <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff"> <i class></i> 0.0% </span>
@@ -677,20 +682,154 @@ Inconsistency
 <span style="white-space: nowrap; text-align: left; float: left; font-weight: bold; text-indent: 1em">Precio </span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fbfcfb">7.2%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fafbfa">8.3%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdfdfd">0.6%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdfdfd">0.7%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcfcfc">1.4%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcfbfc">1.6%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f5f4f5">5.3%</span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f4f3f4">6.1%</span>
 </td>
 <td style="text-align:right;">
-<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f4e6cc"> <i class></i> 6.2% </span>
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f3e5ca"> <i class></i> 6.2% </span>
 </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="versiones" class="section level1">
+<h1>VERSIONES</h1>
+<div id="matriz-de-comparación-entre-criterios" class="section level2">
+<h2>Matriz de comparación entre criterios</h2>
+<p>En la versión 1, teníamos la siguiente matriz de comparación entre criterios:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Criterios</th>
+<th>Seguridad</th>
+<th>Condiciones</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Seguridad</td>
+<td>1</td>
+<td>9</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>Condiciones</td>
+<td>1/9</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>Precio</td>
+<td>1/7</td>
+<td>1/3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Con estos datos, obtenemos una inconsistencia del 19.6%. Por ello, y trás haber revisado los pesos, hemos obtenido la siguiente matriz de comparación:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Criterios</th>
+<th>Seguridad</th>
+<th>Condiciones</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Seguridad</td>
+<td>1</td>
+<td>9</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>Condiciones</td>
+<td>1/9</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>Precio</td>
+<td>1/7</td>
+<td>1/2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Ahora la inconsistencia es menor del 10%</p>
+</div>
+<div id="matriz-de-comparación-entre-alternativas-según-criterios" class="section level2">
+<h2>Matriz de comparación entre alternativas según criterios</h2>
+<p>En el criterio <em>seguridad</em>, teníamos una inconsistencia del 9% inicialmente, con la siguiente matríz de comparaciones:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Seguridad</th>
+<th>Moto</th>
+<th>Patín</th>
+<th>Coche</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Moto</td>
+<td>1</td>
+<td>1/3</td>
+<td>1/7</td>
+</tr>
+<tr class="even">
+<td>Patín</td>
+<td>3</td>
+<td>1</td>
+<td>1/5</td>
+</tr>
+<tr class="odd">
+<td>Coche</td>
+<td>7</td>
+<td>5 (4*)</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Por tanto, cambiando la matriz obtenemos una inconsistencia del 5.1%:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Seguridad</th>
+<th>Moto</th>
+<th>Patín</th>
+<th>Coche</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Moto</td>
+<td>1</td>
+<td>1/3</td>
+<td>1/7</td>
+</tr>
+<tr class="even">
+<td>Patín</td>
+<td>3</td>
+<td>1</td>
+<td>1/4</td>
+</tr>
+<tr class="odd">
+<td>Coche</td>
+<td>7</td>
+<td>4</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>

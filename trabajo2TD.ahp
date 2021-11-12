@@ -9,7 +9,7 @@ Goal:
     pairwise:
       - [Seguridad, CondicionesViaje,9]
       - [Seguridad, Precio,7]
-      - [CondicionesViaje , Precio ,3]
+      - [CondicionesViaje , Precio ,2]
   children:
     Seguridad:
       preferences:
