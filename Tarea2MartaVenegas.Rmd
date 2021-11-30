@@ -21,82 +21,102 @@ source("ScriptsNecesarios/teoriadecision_funciones_multicriterio.R")
 #source("ScriptsNecesarios/teoriadecision_funciones_multicriterio_diagram.R")
 source("ScriptsNecesarios/teoriadecision_funciones_multicriterio_utiles.R")
 ```
+
 ## Enunciado
 
 Luis hace su último año de residencia de anestesia en el hospital General Universitario de Ciudad Real, pero tiene que ir un mes a trabajar en el hospital Asepeyo en un pueblo a las afueras de Madrid, por lo que va a vivirá durante un mes en Madrid Capital, pero debe ir y volver a Ciudad Real 3 veces para hacer guardias.
 
-
 Debe elegir un medio de transporte entre tres posibles alternativas:
 
-- Alquilar una moto en Madrid para ese mes, que sería un total de 220$ más gasolina.
+-   Alquilar una moto en Madrid para ese mes, que sería un total de 220\$ más gasolina.
 
-- Compar un patinete eléctrico (200 euros) y sacar un bono de metro que le permita ir y volver al hospital desde el centro por 28 euros.
+-   Compar un patinete eléctrico (200 euros) y sacar un bono de metro que le permita ir y volver al hospital desde el centro por 28 euros.
 
 Para estas dos opciones, necesitaría sacar un abono de 10 viajes de Renfe para ir y volver a Ciudad Real, por un importe de 195 euros.
 
-- Llevar su coche, con el que puede ir al hospital desde el centro y a Ciudad Real cuando necesite hacer las guardias. Si escoge llevar su coche, tendría que alquilar una plaza de garaje por 200 euros, además de pagar la gasolina.
+-   Llevar su coche, con el que puede ir al hospital desde el centro y a Ciudad Real cuando necesite hacer las guardias. Si escoge llevar su coche, tendría que alquilar una plaza de garaje por 200 euros, además de pagar la gasolina.
 
 Para tomar una decisión, Luis ha considerado tres criterios:
 
-- Seguridad
-- Precio
-- Condiciones de viaje
-	- Tiempo invertido en el/los trayecto
-	- Meteorología (frío/lluvia/nieve)
-  
+-   Seguridad
+
+-   Precio
+
+-   Condiciones de viaje
+
+    -   Tiempo invertido en el/los trayecto
+    -   Meteorología (frío/lluvia/nieve)
 
 Dentro de las condiciones de viaje, considera que es importante considerar el tiempo que tardaría en llegar al hospital en función del medio de transporte elegido y las condiciones meteorológicas, que le harían tener que cambiar su itinerario.
 
 -   Matriz comparación entre Criterios
 
-|   Criterios    | Seguridad | Condiciones  | Precio  |
-|----------------|-----------|--------------|---------|
-| Seguridad      |     1     |       9      |     7   |
-| Condiciones    |    1/9    |    1         |     2   |
-| Precio         |    1/7    |    1/3       |     1   |
+| Criterios   | Seguridad | Condiciones | Precio |
+|-------------|-----------|-------------|--------|
+| Seguridad   | 1         | 9           | 7      |
+| Condiciones | 1/9       | 1           | 2      |
+| Precio      | 1/7       | 1/3         | 1      |
 
+-   Matriz de ponderación de importancias dentro del criterio CONDICIONES DEL VIAJE
 
-- Matriz de ponderación de importancias dentro del criterio CONDICIONES DEL VIAJE
-
-|  Condiciones |Tiempo(tray)| Meteorología | 
-|--------------|------------|--------------|
-| Tiempo(tray) |       1    |        7     |  
-| Meteorología |      1/7   |        1     |    
-
+| Condiciones  | Tiempo(tray) | Meteorología |
+|--------------|--------------|--------------|
+| Tiempo(tray) | 1            | 7            |
+| Meteorología | 1/7          | 1            |
 
 -   Matriz comparación entre Alternativas según Criterios
 
+| Seguridad | Moto | Patín   | Coche |
+|-----------|------|---------|-------|
+| Moto      | 1    | 1/3     | 1/7   |
+| Patín     | 3    | 1       | 1/5   |
+| Coche     | 7    | 5 (4\*) | 1     |
 
-|Seguridad | Moto    | Patín   |Coche|
-|----------|---------|---------|-----|
-Moto		 	 |		1    |		1/3  | 1/7 |
-Patín			 |	  	3	 |		1    | 1/5 |
-Coche		   |		7		 |5 (4*)   |  1  |
-
-
-|Precio  | Moto | Patín | Coche |
+| Precio | Moto | Patín | Coche |
 |--------|------|-------|-------|
-|Moto		 |	1   |		1/3 |    7  |
-|Patín	 |	3		|		1   |    5  |
-|Coche	 |	1/7	|	1/5   |     1 |
+| Moto   | 1    | 1/3   | 7     |
+| Patín  | 3    | 1     | 5     |
+| Coche  | 1/7  | 1/5   | 1     |
 
 -   Matriz comparación entre Alternativas según Subcriterios
 
-Meteorología  | Moto | Patín | Coche |
-|--------------|---------|---------|----------|
-Moto		 		|		1     |		1     |    1/7
-Patín			   |	  	1		 |		1     |    1/7
-Coche		   |		7     |	   7     |     1
+| Meteorología | Moto | Patín | Coche |
+|--------------|------|-------|-------|
+| Moto         | 1    | 1     | 1/7   |
+| Patín        | 1    | 1     | 1/7   |
+| Coche        | 7    | 7     | 1     |
 
-Tiempo | Moto  | Patín   | Coche
-|----------|---------|----------|----------|
-Moto		 |		1      | 		7     |    2    |
-Patín		 |	  	1/7	  |		1	    |    1/5    |
-Coche	 |		1/2	  |		 5    |     1   |
+| Tiempo | Moto | Patín | Coche |
+|--------|------|-------|-------|
+| Moto   | 1    | 7     | 2     |
+| Patín  | 1/7  | 1     | 1/5   |
+| Coche  | 1/2  | 5     | 1     |
+
+El decisor nos ha proporcionado los siguientes pesos preferenciales: W=(0.5,0.25,0.25)
+
+Como ya sabíamos, para tomar una decisión, Luis ha considerado tres criterios relevantes para tomar la decisión de clasificar los tres medios de transporte para viajar durante ese mes que está en Madrid.
+
+-   Seguridad (maximizar)
+-   Precio (minimizar)
+-   Condiciones de viaje (maximizar)
+
+Ahora encontramos una table con información relevante proporcionada por Luis para resolver el problema.
+
++----------------------+------------+------------+--------------+--------------+
+| Criterio             | Min/Max    | Tipo       | Parámetros   | Parámetros   |
++======================+============+============+==============+==============+
+| Seguridad            | Max        | III        | q=1          |              |
++----------------------+------------+------------+--------------+--------------+
+| Precio               | Min        | I          | q=10         | p=30         |
++----------------------+------------+------------+--------------+--------------+
+| Condiciones de viaje | Max        | II         | s=3          | p=5          |
++----------------------+------------+------------+--------------+--------------+
+
+Para aplicar el método electre, iniciar el proceso con $\alpha=0.75$ y d=($\infty$,$\infty$,$\infty$)
+
+Utilizar los métodos Electre y Promethee para ordenar las alternativas y obtener la mejor decisión.
 
 ## Solución con paquete AHP
-
-
 
 ```{r}
 #devtools::install_github("gluc/ahp", build_vignettes = TRUE)
@@ -109,62 +129,59 @@ dtMio = Load("trabajo2TD.ahp")
 Visualize(dtMio)
 ```
 
-
 ### Pesos globales. Criterios/Subcriterios y Alternativas
 
 ```{r}
 ahp::Calculate(dtMio)
 ahp::AnalyzeTable(dtMio, sort="orig",variable="priority")
 ```
+
 ### Tabla para la interpretación
+
 ```{r}
 ahp::AnalyzeTable(dtMio, sort="orig")
 ```
 
+# Método Promethee
 
+# Método Electre
 
 # VERSIONES
 
 ## Matriz de comparación entre criterios
+
 En la versión 1, teníamos la siguiente matriz de comparación entre criterios:
 
+| Criterios   | Seguridad | Condiciones | Precio |
+|-------------|-----------|-------------|--------|
+| Seguridad   | 1         | 9           | 7      |
+| Condiciones | 1/9       | 1           | 3      |
+| Precio      | 1/7       | 1/3         | 1      |
 
+Con estos datos, obtenemos una inconsistencia del 19.6%. Por ello, y trás haber revisado los pesos, hemos obtenido la siguiente matriz de comparación:
 
-|   Criterios    | Seguridad | Condiciones  | Precio  |
-|----------------|-----------|--------------|---------|
-| Seguridad      |     1     |      9       |    7    |
-| Condiciones    |    1/9    |      1       |    3    |
-| Precio         |    1/7    |      1/3     |    1    |
-
-
-Con estos datos, obtenemos una inconsistencia del  19.6%. Por ello, y trás haber revisado los pesos, hemos obtenido la siguiente matriz de comparación:
-
-
-|   Criterios    | Seguridad | Condiciones  | Precio  |
-|----------------|-----------|--------------|---------|
-| Seguridad      |     1     |      9       |    7    |
-| Condiciones    |    1/9    |      1       |    2    |
-| Precio         |    1/7    |      1/2     |    1    |
+| Criterios   | Seguridad | Condiciones | Precio |
+|-------------|-----------|-------------|--------|
+| Seguridad   | 1         | 9           | 7      |
+| Condiciones | 1/9       | 1           | 2      |
+| Precio      | 1/7       | 1/2         | 1      |
 
 Ahora la inconsistencia es menor del 10%
-
 
 ## Matriz de comparación entre alternativas según criterios
 
 En el criterio *seguridad*, teníamos una inconsistencia del 9% inicialmente, con la siguiente matríz de comparaciones:
 
-
-|Seguridad | Moto    | Patín   |Coche|
-|----------|---------|---------|-----|
-Moto		 	 |		1    |		1/3  | 1/7 |
-Patín			 |	  	3	 |		1    | 1/5 |
-Coche		   |		7		 |5 (4*)   |  1  |
+| Seguridad | Moto | Patín   | Coche |
+|-----------|------|---------|-------|
+| Moto      | 1    | 1/3     | 1/7   |
+| Patín     | 3    | 1       | 1/5   |
+| Coche     | 7    | 5 (4\*) | 1     |
 
 Por tanto, cambiando la matriz obtenemos una inconsistencia del 5.1%:
 
-
-|Seguridad | Moto    | Patín   |Coche|
-|----------|---------|---------|-----|
-Moto		 	 |		1    |		1/3  | 1/7 |
-Patín			 |	  3 	 |		1    | 1/4 |
-Coche		   |		7		 |    4    |  1  |
+| Seguridad | Moto | Patín | Coche |
+|-----------|------|-------|-------|
+| Moto      | 1    | 1/3   | 1/7   |
+| Patín     | 3    | 1     | 1/4   |
+| Coche     | 7    | 4     | 1     |
