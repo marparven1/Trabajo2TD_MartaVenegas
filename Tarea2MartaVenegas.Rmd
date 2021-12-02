@@ -32,13 +32,13 @@ Luis hace su último año de residencia de anestesia en el hospital General Univ
 
 Debe elegir un medio de transporte entre tres posibles alternativas:
 
--   Alquilar una moto en Madrid para ese mes, que sería un total de 220\$ más gasolina.
+-   Alquilar una moto en Madrid para ese mes, que sería un total de 220 euros más gasolina.
 
 -   Compar un patinete eléctrico (200 euros) y sacar un bono de metro que le permita ir y volver al hospital desde el centro por 28 euros.
 
 Para estas dos opciones, necesitaría sacar un abono de 10 viajes de Renfe para ir y volver a Ciudad Real, por un importe de 195 euros.
 
--   Llevar su coche, con el que puede ir al hospital desde el centro y a Ciudad Real cuando necesite hacer las guardias. Si escoge llevar su coche, tendría que alquilar una plaza de garaje por 200 euros, además de pagar la gasolina.
+-   Llevar su coche, con el que puede ir al hospital desde el centro y a Ciudad Real cuando necesite hacer las guardias. Si escoge llevar su coche, tendría que alquilar una plaza de garaje por 250 euros, además de pagar la gasolina.
 
 Para tomar una decisión, Luis ha considerado tres criterios:
 
@@ -63,9 +63,9 @@ Dentro de las condiciones de viaje, considera que es importante considerar el ti
 
 -   Matriz de ponderación de importancias dentro del criterio CONDICIONES DEL VIAJE
 
-| Condiciones  | Tiempo(tray) | Meteorología |
+| Condiciones  | Tiempo(trayect) | Meteorología |
 |--------------|--------------|--------------|
-| Tiempo(tray) | 1            | 7            |
+| Tiempo(trayect) | 1            | 7            |
 | Meteorología | 1/7          | 1            |
 
 -   Matriz comparación entre Alternativas según Criterios
@@ -74,7 +74,7 @@ Dentro de las condiciones de viaje, considera que es importante considerar el ti
 |-----------|------|---------|-------|
 | Moto      | 1    | 1/3     | 1/7   |
 | Patín     | 3    | 1       | 1/5   |
-| Coche     | 7    | 5 (4\*) | 1     |
+| Coche     | 7    | 5       | 1     |
 
 | Precio | Moto | Patín | Coche |
 |--------|------|-------|-------|
@@ -98,7 +98,7 @@ Dentro de las condiciones de viaje, considera que es importante considerar el ti
 
 Para conseguir una ordenación de las alternativas y obtener la mejor, tenemos la siguiente información
 
-El decisor nos ha proporcionado los siguientes pesos preferenciales: W=(0.5,0.25,0.25)
+El decisor nos ha proporcionado los siguientes pesos preferenciales: W=(0.4,0.2,0.4)
 
 Como ya sabíamos, para tomar una decisión, Luis ha considerado tres criterios relevantes para tomar la decisión de clasificar los tres medios de transporte para viajar durante ese mes que está en Madrid.
 
@@ -106,7 +106,8 @@ Como ya sabíamos, para tomar una decisión, Luis ha considerado tres criterios 
 -   Precio (minimizar)
 -   Condiciones de viaje (maximizar)
 
-Ahora encontramos una table con información relevante proporcionada por Luis para resolver el problema.
+Ahora encontramos una tabla con información relevante proporcionada por Luis para resolver el problema.
+
 
 | Criterio             | Min/Max | Tipo | Parámetros | Parámetros |
 |----------------------|---------|------|------------|------------|
@@ -119,8 +120,10 @@ La matriz de decisión viene recogida en la siguiente tabla:
 | A/C   | C1: Seguridad | C2: Precio     | C3: Condiciones |
 |-------|---------------|----------------|-----------------|
 | Moto  | 80            | `r 220+195`    | 90              |
-| Patín | 250           | `r 200+28+195` | 100             |
-| Coche | 500           | `r 200+100`    | 80              |
+| Patín | 350           | `r 200+28+195` | 110             |
+| Coche | 450           | `r 200+100`    | 80              |
+
+
 
 Para aplicar el método electre, iniciar el proceso con $\alpha=0.75$ y d=($\infty$,55,$\infty$). Es decir, para que una alternativa supere a otra en precio, debe haber como mínimo, una diferencia de 55 euros, para cantidades inferiores, consideramos que ambas alternativas son equivalentes.
 
@@ -131,27 +134,66 @@ Utilizar los métodos Electre y Promethee para ordenar las alternativas y obtene
 ```{r}
 #devtools::install_github("gluc/ahp", build_vignettes = TRUE)
 # ahp::RunGUI()
+ #install.packages("devtools")
+devtools::install_github("gluc/ahp", build_vignettes = TRUE)
 library(ahp)
-dtMio = Load("trabajo2TD.ahp")
+MovilidadAHP = Load("trabajo2TD.ahp")
+
 ```
+
+Para evitar mensajes no deseados, añadimos la siguiente función:
+
+```{r}
+Visualize_mej = function(modeloahp) {
+    sink("temp.txt")
+    s1 = Visualize(modeloahp)
+    sink()
+    unlink("temp.txt")
+    s1
+}
+```
+
+
 
 ```{r message=FALSE}
-Visualize(dtMio)
+#Visualize(dtMio)
+Visualize_mej(MovilidadAHP )
 ```
 
-### Pesos globales. Criterios/Subcriterios y Alternativas
+### Locales. Criterios/Subcriterios y Alternativas
+
 
 ```{r}
-ahp::Calculate(dtMio)
-ahp::AnalyzeTable(dtMio, sort="orig",variable="priority")
+ahp::Calculate(MovilidadAHP )
+ahp::AnalyzeTable(MovilidadAHP , sort="orig",variable="priority")
 ```
 
-### Tabla para la interpretación
+### Tabla para la interpretación. Pesos globales
+
+
 
 ```{r}
-ahp::AnalyzeTable(dtMio, sort="orig")
+ahp::AnalyzeTable(MovilidadAHP , sort="orig")
 ```
 
+Conclusiones:
+
+- **Solución AHP**: la alternativa elegida como medio de transporte en Madrid es el coche, como segunda alternativa, el patinete eléctrico y por último, la moto
+- El criterio que más le ha aportado a la alternativa coche para la puntuación final es la Seguridad, con un peso del 51.7%, es decir, más de la mitad, es un peso muy grande
+- Respecto al tiempo de trayecto, la alternativa de ir en moto es la que tiene más puntuación 6.3%, frente a un 0.8% del patín eléctrico y un 3.5% del coche
+- Respecto al precio, la mejor alternativa es el coche.
+
+- Por el contrario, el criterio que menos ha aportado al coche para la puntuación final son las condiciones de viaje (4.7%) y dentro de este criterio, el subcriterio meteorología es el menos importante de todos, con un peso del 1.2%
+- El precio ha jugado el papel intermedio, con un peso del 6.1% sin embargo, la importancia ha sido considerablemente inferior al peso del criterio seguridad, acercándose más al peso de las condiciones de viaje.
+
+
+
+- Todas las matrices están por debajo del 10% de inconsistencia, nivel frontera. Todas pasan el nivel de aceptación
+
+Explicación de los pesos globales:
+
+- Para el criterio seguridad, los pesos globales obtenidos para cada alternativa son: 7.0% moto, 15.5% patín eléctrico y 57.1% coche. Esos porcentajes son, respectivamente el 7%, 15.5% y 71.7% del peso del criterio seguridad (79.6%). 
+- El subcriterio meteorología tenía los siguientes pesos locales para cada alternativa: 11.1% moto, 11.1% patín y 77.8% coche. Por tanto, para hallar los pesos globales tenemos que aplicar ese porcentaje mencionado al 12.5% (peso local del criterio meteorología)
 
 
 
@@ -203,6 +245,7 @@ qgraph::qgraph(salM$tablarelacionsupera)
 
 Ir en coche domina a todos y el patinete domina a la moto. La moto no domina a ninguna alternativa.
 
+Conclusión: la mejor alternativa es ir en coche, la segunda sería ir en patín eléctrico y por último, ir en moto sería la última alternativa a considerar.
 
 ## Promethee II
 
@@ -236,6 +279,7 @@ order(salMPrometheeII$vflujos.netos,decreasing = T)
 ```
 
 Me dice que la alternativa 3 (ir en coche) es la mejor, seguido de ir en patín y por último, la moto.
+
 
 
 
@@ -421,13 +465,7 @@ El núcleo
 salke$Nucleo
 ```
 
-Por tanto, la mejor alternativa es la 3, ir en coche. Segundo, ir en patinete y por último, ir en moto sería la última alternativa a elegir.
-
-
-
-
-
-
+Por tanto, la mejor alternativa es la 3, ir en coche. Segundo, ir en patinete y por último, ir en moto sería la última alternativa que tomaríamos.
 
 
 
