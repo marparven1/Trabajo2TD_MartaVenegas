@@ -9,6 +9,10 @@ output:
     highlight: github
     toc: true
     toc_depth: 4
+    number_section: yes
+  pdf_document:
+    toc: true
+    toc_depth: 4
     number_section: no
 ---
 
@@ -158,8 +162,8 @@ ahp::AnalyzeTable(dtMio, sort="orig")
 ```{r}
 tabdec.X = multicriterio.crea.matrizdecision(
   c(80,-(220+195),90,
-   250,-(200+28+195),100,
-   500,-(200+100),80),
+   350,-(200+28+195),110,
+   450,-(200+100),90),
   numalternativas=3,
   numcriterios=3,
   v.nombresalt=c("Moto","Patinete E","Coche"),
@@ -170,20 +174,20 @@ tabdec.X
 ```
 
 ```{r}
-wi<-c(1/2,1/4,1/4)
-# Le da más importancia a la seguridad, el doble que al precio y a las condiciones del viaje
+wi<-c(2/5,1/5,2/5)
+# Le da más importancia a la seguridad y a las condiciones del viaje que al precio
 salM= multicriterio.metodo.promethee_i(
   tabdec.X,
   pesos.criterios = wi, # porque son 6 criterios, LOS PESOS DEBEN SUMAR 1
-  tab.fpref=matrix(c( 3,1, 0, 0, # nro ,qi,pi,si
-                      1,10,30,0,
-                      2,3, 5, 0),
+  tab.fpref=matrix(c( 2,1, 0, 0, # nro ,qi,pi,si
+                      3,10,30,0,
+                      1,3, 5, 0),
                    ncol=4,
                    byrow=TRUE))
 
-  tab.fpref=matrix(c( 3,1, 0, 0, # nro ,qi,pi,si
-                      1,10,30,0,
-                      2,3, 5, 0),ncol=3,
+  tab.fpref=matrix(c( 2,1, 0, 0, # nro ,qi,pi,si
+                      3,10,30,0,
+                      1,3, 5, 0),ncol=4,
                    byrow=TRUE)
 salM
 ```
@@ -199,23 +203,6 @@ qgraph::qgraph(salM$tablarelacionsupera)
 
 Ir en coche domina a todos y el patinete domina a la moto. La moto no domina a ninguna alternativa.
 
-### Medias
-
-```{r}
-# Tab.Pthee.I_med= multicriterio.metodo.promethee_i_med(
-#   tabdecs.X = tabdec.X,
-#    pesos.criterios = wi,
-#    tab.fpref = tab.fpref)
-# Tab.Pthee.I_med
-```
-
-
-Representar en un grafo:
-
-```{r}
-# qgraph::qgraph(Tab.Pthee.I_med$tablarelacionsupera)
-```
-
 
 ## Promethee II
 
@@ -223,15 +210,15 @@ Representar en un grafo:
 salMPrometheeII= multicriterio.metodo.promethee_ii(
   tabdec.X,
   pesos.criterios = wi, # porque son 6 criterios, LOS PESOS DEBEN SUMAR 1
-  tab.fpref=matrix(c( 3,1, 1, 0, # nro ,qi,pi,si
-                      1,10,30,0,
-                      2,3, 5, 0),
+  tab.fpref=matrix(c( 2,1, 1, 0, # nro ,qi,pi,si
+                      3,10,30,0,
+                      1,3, 5, 0),
                    ncol=4,
                    byrow=TRUE))
 
-  tab.fpref=matrix(c( 3,1, 1, 0, # nro ,qi,pi,si
-                      1,10,30,0,
-                      2,3, 5, 0),ncol=3,
+  tab.fpref=matrix(c( 2,1, 1, 0, # nro ,qi,pi,si
+                      3,10,30,0,
+                      1,3, 5, 0),ncol=3,
                    byrow=TRUE)
 salMPrometheeII
 ```
@@ -253,45 +240,6 @@ Me dice que la alternativa 3 (ir en coche) es la mejor, seguido de ir en patín 
 
 
 
-### Medias
-
-```{r}
-# Tab.Pthee.II_med_8= multicriterio.metodo.promethee_ii_med( tabdecs.X = # tabdec.X,
-#                                                            pesos.criterios = # rep(1/6,6),
-#                                                           tab.fpref   =  # tab.fpref)
-# Tab.Pthee.II_med_8
-```
-
-
-
-
-Representar en un grafo:
-
-```{r}
-#qgraph::qgraph(Tab.Pthee.II_med_8$tablarelacionsupera)
-```
-
-
-
-Ordenación final con promethee II medias 
-
-```{r}
-#order(Tab.Pthee.II_med_8$vflujos.netos,decreasing = T)
-```
-
-### Comparativas con y sin medias
-
-```{r}
-#order(sal8b$vflujos.netos,decreasing = T)
-```
-
-
-
-```{r}
-#order(Tab.Pthee.II_med_8$vflujos.netos,decreasing = T)
-```
-
-La ordenación es la misma.
 
 ## Representación gráfica de las funciones de preferencia
 
@@ -399,6 +347,9 @@ plot (x,y, type="l", col="blue" ,main= "Criterio Pref. Lineal Indiferencia: F5 (
 
 
 
+
+
+
 # Método Electre
 
 
@@ -414,20 +365,78 @@ Método electre:
 
 ```{r}
 salElectre=multicriterio.metodoELECTRE_I(tabdec.X,
-                      pesos.criterios = wi,
-                      nivel.concordancia.minimo.alpha = 0.75,
+                      pesos.criterios = c(2/5,1/5,2/5),
+                      nivel.concordancia.minimo.alpha = 0.7,
                       no.se.compensan = c(Inf,55,Inf),
                       que.alternativas = TRUE
                                    )
-salElectre$nucleo_aprox
+cat("El núcleo es: ",salElectre$nucleo_aprox)
 ```
+Es decir, no conseguimos distinguir qué alternativa es mejor, si ir en patinete o en coche.
+
 
 Representación del grafo
 
 ```{r}
 qgraph::qgraph(salElectre$relacion.dominante)
 ```
-Programar para que se hagan más iteraciones.
+
+Vamos a realizar iteraciones de este método para ver si conseguimos establecer una relación de preferencia entre un método y otro.
+
+
+## Segunda iteración
+
+En la siguiente iteración:
+
+```{r}
+salElectrei2=multicriterio.metodoELECTRE_I(tabdec.X,
+                      pesos.criterios = wi,
+                      nivel.concordancia.minimo.alpha = 0.7,
+                      no.se.compensan = c(Inf,55,Inf),
+                      que.alternativas = c(2,3))
+                                   
+salElectrei2$nucleo_aprox
+```
+El núcleo es el mismo que antes. Tengo que bajar alpha
+
+
+
+```{r}
+qgraph::qgraph(salElectrei2$relacion.dominante)
+```
+
+
+Ambas alternativas siguen siendo equivalentes.
+
+
+
+
+
+## Tercera iteracción
+
+En la siguiente iteración:
+
+```{r}
+salElectrei3=multicriterio.metodoELECTRE_I(tabdec.X,
+                      pesos.criterios = wi,
+                      nivel.concordancia.minimo.alpha = 0.6, # 0.68, 0.60
+                      no.se.compensan = c(Inf,55,Inf),
+                      que.alternativas = c(2,3))
+                                   
+salElectrei3$nucleo_aprox
+```
+
+
+Ahora, el núcleo es la alternativa 2, es decir: ir en coche.
+
+```{r}
+qgraph::qgraph(salElectrei3$relacion.dominante)
+```
+
+
+
+Por tanto, según el método electre, la mejor alternativa es: IR EN COCHE.
+
 
 ## Cálculos en el método electre I La representación de las tables de test con KableExtra
 
@@ -439,10 +448,8 @@ salke = func_ELECTRE_Completo(salElectre)
 ```
 
 ```{r}
-salke$MIndices
+salke$MIndices$KE
 ```
-
-
 
 Comentarios respecto a la alternativa 1 A1: Ir en moto
 
@@ -451,21 +458,16 @@ Comentarios respecto a la alternativa 1 A1: Ir en moto
 - No es igual a ninguna alternativa en ningún criterio
 
 
-La alternativa 2, A2: Ir en patín
+Comentarios respecto A2 y A3: 
 
-
-
-
-- A1 no supera a A2 en los criterios 1, 3 y 5
-- En los criterios 1,3,5 a1 peor a2
-
+- La alternativa A2 (ir en patinete), gana a la alternativa 3 en el criterio 3 ()
 
 
 
 
 
 ```{r}
-salke$TConcordancia
+salke$TConcordancia$KE
 ```
 
 
@@ -479,11 +481,10 @@ Sólo pasan el test de corcondancia:
 
 - A2SA1: Ir en patín supera a ir en moto
 - A3SA1: Ir en coche supera a ir en moto
-- A3SA2: Ir en coche supera a ir en patin
 
 
 ```{r}
-salke$TDiscordancia
+salke$TDiscordancia$KE
 ```
 
 Notación:
@@ -496,7 +497,6 @@ Las alternativas que pasaban el test de concordancia también pasan el de discor
 
 - A2SA1: Ir en patín supera a ir en moto
 - A3SA1: Ir en coche supera a ir en moto
-- A3SA2: Ir en coche supera a ir en patin
 
 
 
@@ -509,7 +509,6 @@ CONCLUSIÓN:
 
 - A2SA1: Ir en patín supera a ir en moto
 - A3SA1: Ir en coche supera a ir en moto
-- A3SA2: Ir en coche supera a ir en patin
 
 
 ```{r}
@@ -580,3 +579,12 @@ Por tanto, cambiando la matriz obtenemos una inconsistencia del 5.1%:
 | Moto      | 1    | 1/3   | 1/7   |
 | Patín     | 3    | 1     | 1/4   |
 | Coche     | 7    | 4     | 1     |
+
+
+## Método electre
+
+Inicialmente, con unos pesos \(w_i=(0.5,0.25,0.25\) y aplicando el método Electre, directamente en la primera iteracción obteníamos que el núcleo era la altertativa: _ir en coche_. Esto ocurría a pesar de probar con distintos valores iniciales de $\alpha$.
+Por ello, probamos con los pesos  \(w_i=(0.4,0.3,0.3\) y seguía ocurriendo lo mismo. 
+Finalmente, elegimos los pesos siguientes \(w_i=(0.4,0.2,0.4\), donde al menos teníamos que realizar dos iteraciones para poder elegir una alternativa.
+
+

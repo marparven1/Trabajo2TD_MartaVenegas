@@ -1,0 +1,1435 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Trabajo 2. Decisión Multicriterio},
+  pdfauthor={Marta Venegas Pardo},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Trabajo 2. Decisión Multicriterio}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Teoría de la decisión}
+\author{Marta Venegas Pardo}
+\date{11/9/2021}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{4}
+\tableofcontents
+}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\StringTok{"ScriptsNecesarios/teoriadecision\_funciones\_multicriterio.R"}\NormalTok{)}
+\CommentTok{\#source("ScriptsNecesarios/teoriadecision\_funciones\_multicriterio\_diagram.R")}
+\FunctionTok{source}\NormalTok{(}\StringTok{"ScriptsNecesarios/teoriadecision\_funciones\_multicriterio\_utiles.R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{enunciado}{%
+\subsection{Enunciado}\label{enunciado}}
+
+Luis hace su último año de residencia de anestesia en el hospital
+General Universitario de Ciudad Real, pero tiene que ir un mes a
+trabajar en el hospital Asepeyo en un pueblo a las afueras de Madrid,
+por lo que va a vivirá durante un mes en Madrid Capital, pero debe ir y
+volver a Ciudad Real 3 veces para hacer guardias.
+
+Debe elegir un medio de transporte entre tres posibles alternativas:
+
+\begin{itemize}
+\item
+  Alquilar una moto en Madrid para ese mes, que sería un total de 220\$
+  más gasolina.
+\item
+  Compar un patinete eléctrico (200 euros) y sacar un bono de metro que
+  le permita ir y volver al hospital desde el centro por 28 euros.
+\end{itemize}
+
+Para estas dos opciones, necesitaría sacar un abono de 10 viajes de
+Renfe para ir y volver a Ciudad Real, por un importe de 195 euros.
+
+\begin{itemize}
+\tightlist
+\item
+  Llevar su coche, con el que puede ir al hospital desde el centro y a
+  Ciudad Real cuando necesite hacer las guardias. Si escoge llevar su
+  coche, tendría que alquilar una plaza de garaje por 200 euros, además
+  de pagar la gasolina.
+\end{itemize}
+
+Para tomar una decisión, Luis ha considerado tres criterios:
+
+\begin{itemize}
+\item
+  Seguridad
+\item
+  Precio
+\item
+  Condiciones de viaje
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Tiempo invertido en el/los trayecto
+  \item
+    Meteorología (frío/lluvia/nieve)
+  \end{itemize}
+\end{itemize}
+
+Dentro de las condiciones de viaje, considera que es importante
+considerar el tiempo que tardaría en llegar al hospital en función del
+medio de transporte elegido y las condiciones meteorológicas, que le
+harían tener que cambiar su itinerario.
+
+\begin{itemize}
+\tightlist
+\item
+  Matriz comparación entre Criterios
+\end{itemize}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Criterios & Seguridad & Condiciones & Precio \\
+\midrule
+\endhead
+Seguridad & 1 & 9 & 7 \\
+Condiciones & 1/9 & 1 & 2 \\
+Precio & 1/7 & 1/3 & 1 \\
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Matriz de ponderación de importancias dentro del criterio CONDICIONES
+  DEL VIAJE
+\end{itemize}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+Condiciones & Tiempo(tray) & Meteorología \\
+\midrule
+\endhead
+Tiempo(tray) & 1 & 7 \\
+Meteorología & 1/7 & 1 \\
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Matriz comparación entre Alternativas según Criterios
+\end{itemize}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Seguridad & Moto & Patín & Coche \\
+\midrule
+\endhead
+Moto & 1 & 1/3 & 1/7 \\
+Patín & 3 & 1 & 1/5 \\
+Coche & 7 & 5 (4*) & 1 \\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Precio & Moto & Patín & Coche \\
+\midrule
+\endhead
+Moto & 1 & 1/3 & 7 \\
+Patín & 3 & 1 & 5 \\
+Coche & 1/7 & 1/5 & 1 \\
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Matriz comparación entre Alternativas según Subcriterios
+\end{itemize}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Meteorología & Moto & Patín & Coche \\
+\midrule
+\endhead
+Moto & 1 & 1 & 1/7 \\
+Patín & 1 & 1 & 1/7 \\
+Coche & 7 & 7 & 1 \\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Tiempo & Moto & Patín & Coche \\
+\midrule
+\endhead
+Moto & 1 & 7 & 2 \\
+Patín & 1/7 & 1 & 1/5 \\
+Coche & 1/2 & 5 & 1 \\
+\bottomrule
+\end{longtable}
+
+Para conseguir una ordenación de las alternativas y obtener la mejor,
+tenemos la siguiente información
+
+El decisor nos ha proporcionado los siguientes pesos preferenciales:
+W=(0.5,0.25,0.25)
+
+Como ya sabíamos, para tomar una decisión, Luis ha considerado tres
+criterios relevantes para tomar la decisión de clasificar los tres
+medios de transporte para viajar durante ese mes que está en Madrid.
+
+\begin{itemize}
+\tightlist
+\item
+  Seguridad (maximizar)
+\item
+  Precio (minimizar)
+\item
+  Condiciones de viaje (maximizar)
+\end{itemize}
+
+Ahora encontramos una table con información relevante proporcionada por
+Luis para resolver el problema.
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+Criterio & Min/Max & Tipo & Parámetros & Parámetros \\
+\midrule
+\endhead
+Seguridad & Max & III & q=1 & \\
+Precio & Min & I & q=10 & p=30 \\
+Condiciones de viaje & Max & II & s=3 & p=5 \\
+\bottomrule
+\end{longtable}
+
+La matriz de decisión viene recogida en la siguiente tabla:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+A/C & C1: Seguridad & C2: Precio & C3: Condiciones \\
+\midrule
+\endhead
+Moto & 80 & 415 & 90 \\
+Patín & 250 & 423 & 100 \\
+Coche & 500 & 300 & 80 \\
+\bottomrule
+\end{longtable}
+
+Para aplicar el método electre, iniciar el proceso con \(\alpha=0.75\) y
+d=(\(\infty\),55,\(\infty\)). Es decir, para que una alternativa supere
+a otra en precio, debe haber como mínimo, una diferencia de 55 euros,
+para cantidades inferiores, consideramos que ambas alternativas son
+equivalentes.
+
+Utilizar los métodos Electre y Promethee para ordenar las alternativas y
+obtener la mejor decisión.
+
+\hypertarget{soluciuxf3n-con-paquete-ahp}{%
+\subsection{Solución con paquete
+AHP}\label{soluciuxf3n-con-paquete-ahp}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#devtools::install\_github("gluc/ahp", build\_vignettes = TRUE)}
+\CommentTok{\# ahp::RunGUI()}
+\FunctionTok{library}\NormalTok{(ahp)}
+\NormalTok{dtMio }\OtherTok{=} \FunctionTok{Load}\NormalTok{(}\StringTok{"trabajo2TD.ahp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{Visualize}\NormalTok{(dtMio)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+## [1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+\end{verbatim}
+
+\hypertarget{pesos-globales.-criteriossubcriterios-y-alternativas}{%
+\subsubsection{Pesos globales. Criterios/Subcriterios y
+Alternativas}\label{pesos-globales.-criteriossubcriterios-y-alternativas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ahp}\SpecialCharTok{::}\FunctionTok{Calculate}\NormalTok{(dtMio)}
+\NormalTok{ahp}\SpecialCharTok{::}\FunctionTok{AnalyzeTable}\NormalTok{(dtMio, }\AttributeTok{sort=}\StringTok{"orig"}\NormalTok{,}\AttributeTok{variable=}\StringTok{"priority"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Priority
+
+Moto
+
+PatinElectrico
+
+Coche
+
+Inconsistency
+
+{Decidir un medio de transporte en Madrid}
+
+{100.0\%}
+
+{}
+
+{}
+
+{}
+
+{ 9.5\% }
+
+{Seguridad }
+
+{79.6\%}
+
+{8.8\%}
+
+{19.5\%}
+
+{71.7\%}
+
+{ 9.0\% }
+
+{CondicionesViaje }
+
+{12.1\%}
+
+{}
+
+{}
+
+{}
+
+{ 0.0\% }
+
+{TiempoTrayecto }
+
+{87.5\%}
+
+{59.2\%}
+
+{7.5\%}
+
+{33.3\%}
+
+{ 1.3\% }
+
+{Meteorologia }
+
+{12.5\%}
+
+{11.1\%}
+
+{11.1\%}
+
+{77.8\%}
+
+{ 0.0\% }
+
+{Precio }
+
+{8.3\%}
+
+{8.1\%}
+
+{18.8\%}
+
+{73.1\%}
+
+{ 6.2\% }
+
+\hypertarget{tabla-para-la-interpretaciuxf3n}{%
+\subsubsection{Tabla para la
+interpretación}\label{tabla-para-la-interpretaciuxf3n}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ahp}\SpecialCharTok{::}\FunctionTok{AnalyzeTable}\NormalTok{(dtMio, }\AttributeTok{sort=}\StringTok{"orig"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Weight
+
+Moto
+
+PatinElectrico
+
+Coche
+
+Inconsistency
+
+{Decidir un medio de transporte en Madrid}
+
+{100.0\%}
+
+{14.1\%}
+
+{18.0\%}
+
+{67.9\%}
+
+{ 9.5\% }
+
+{Seguridad }
+
+{79.6\%}
+
+{7.0\%}
+
+{15.5\%}
+
+{57.1\%}
+
+{ 9.0\% }
+
+{CondicionesViaje }
+
+{12.1\%}
+
+{6.4\%}
+
+{1.0\%}
+
+{4.7\%}
+
+{ 0.0\% }
+
+{TiempoTrayecto }
+
+{10.6\%}
+
+{6.3\%}
+
+{0.8\%}
+
+{3.5\%}
+
+{ 1.3\% }
+
+{Meteorologia }
+
+{1.5\%}
+
+{0.2\%}
+
+{0.2\%}
+
+{1.2\%}
+
+{ 0.0\% }
+
+{Precio }
+
+{8.3\%}
+
+{0.7\%}
+
+{1.6\%}
+
+{6.1\%}
+
+{ 6.2\% }
+
+\hypertarget{muxe9todo-promethee}{%
+\section{Método Promethee}\label{muxe9todo-promethee}}
+
+\hypertarget{promethee-i}{%
+\subsection{Promethee I}\label{promethee-i}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tabdec.X }\OtherTok{=} \FunctionTok{multicriterio.crea.matrizdecision}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{80}\NormalTok{,}\SpecialCharTok{{-}}\NormalTok{(}\DecValTok{220}\SpecialCharTok{+}\DecValTok{195}\NormalTok{),}\DecValTok{90}\NormalTok{,}
+   \DecValTok{350}\NormalTok{,}\SpecialCharTok{{-}}\NormalTok{(}\DecValTok{200}\SpecialCharTok{+}\DecValTok{28}\SpecialCharTok{+}\DecValTok{195}\NormalTok{),}\DecValTok{110}\NormalTok{,}
+   \DecValTok{450}\NormalTok{,}\SpecialCharTok{{-}}\NormalTok{(}\DecValTok{200}\SpecialCharTok{+}\DecValTok{100}\NormalTok{),}\DecValTok{90}\NormalTok{),}
+  \AttributeTok{numalternativas=}\DecValTok{3}\NormalTok{,}
+  \AttributeTok{numcriterios=}\DecValTok{3}\NormalTok{,}
+  \AttributeTok{v.nombresalt=}\FunctionTok{c}\NormalTok{(}\StringTok{"Moto"}\NormalTok{,}\StringTok{"Patinete E"}\NormalTok{,}\StringTok{"Coche"}\NormalTok{),}
+  \AttributeTok{v.nombrescri =} \FunctionTok{c}\NormalTok{(}\StringTok{"Seguridad"}\NormalTok{,}\StringTok{"Precio"}\NormalTok{,}\StringTok{"Condiciones"}\NormalTok{)}
+                                                    
+\NormalTok{)}
+\NormalTok{tabdec.X}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            Seguridad Precio Condiciones
+## Moto              80   -415          90
+## Patinete E       350   -423         110
+## Coche            450   -300          90
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wi}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\SpecialCharTok{/}\DecValTok{5}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{5}\NormalTok{,}\DecValTok{2}\SpecialCharTok{/}\DecValTok{5}\NormalTok{)}
+\CommentTok{\# Le da más importancia a la seguridad y a las condiciones del viaje que al precio}
+\NormalTok{salM}\OtherTok{=} \FunctionTok{multicriterio.metodo.promethee\_i}\NormalTok{(}
+\NormalTok{  tabdec.X,}
+  \AttributeTok{pesos.criterios =}\NormalTok{ wi, }\CommentTok{\# porque son 6 criterios, LOS PESOS DEBEN SUMAR 1}
+  \AttributeTok{tab.fpref=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{( }\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\CommentTok{\# nro ,qi,pi,si}
+                      \DecValTok{3}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                      \DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{),}
+                   \AttributeTok{ncol=}\DecValTok{4}\NormalTok{,}
+                   \AttributeTok{byrow=}\ConstantTok{TRUE}\NormalTok{))}
+
+\NormalTok{  tab.fpref}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{( }\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\CommentTok{\# nro ,qi,pi,si}
+                      \DecValTok{3}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                      \DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{),}\AttributeTok{ncol=}\DecValTok{4}\NormalTok{,}
+                   \AttributeTok{byrow=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{salM}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $tabla.indices
+##            Moto Patinete E Coche
+## Moto        0.0 0.05333333   0.0
+## Patinete E  0.8 0.00000000   0.4
+## Coche       0.6 0.60000000   0.0
+## 
+## $vflujos.ent
+##       Moto Patinete E      Coche 
+## 0.05333333 1.20000000 1.20000000 
+## 
+## $vflujos.sal
+##       Moto Patinete E      Coche 
+##  1.4000000  0.6533333  0.4000000 
+## 
+## $tablarelacionsupera
+##            Moto Patinete E Coche
+## Moto        0.5        0.0   0.0
+## Patinete E  1.0        0.5   0.0
+## Coche       1.0        1.0   0.5
+\end{verbatim}
+
+Representar en un grafo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qgraph}\SpecialCharTok{::}\FunctionTok{qgraph}\NormalTok{(salM}\SpecialCharTok{$}\NormalTok{tablarelacionsupera)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+Ir en coche domina a todos y el patinete domina a la moto. La moto no
+domina a ninguna alternativa.
+
+\hypertarget{promethee-ii}{%
+\subsection{Promethee II}\label{promethee-ii}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salMPrometheeII}\OtherTok{=} \FunctionTok{multicriterio.metodo.promethee\_ii}\NormalTok{(}
+\NormalTok{  tabdec.X,}
+  \AttributeTok{pesos.criterios =}\NormalTok{ wi, }\CommentTok{\# porque son 6 criterios, LOS PESOS DEBEN SUMAR 1}
+  \AttributeTok{tab.fpref=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{( }\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\CommentTok{\# nro ,qi,pi,si}
+                      \DecValTok{3}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                      \DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{),}
+                   \AttributeTok{ncol=}\DecValTok{4}\NormalTok{,}
+                   \AttributeTok{byrow=}\ConstantTok{TRUE}\NormalTok{))}
+
+\NormalTok{  tab.fpref}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{( }\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\CommentTok{\# nro ,qi,pi,si}
+                      \DecValTok{3}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                      \DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{),}\AttributeTok{ncol=}\DecValTok{3}\NormalTok{,}
+                   \AttributeTok{byrow=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{salMPrometheeII}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $tabla.indices
+##            Moto Patinete E Coche
+## Moto        0.0 0.05333333   0.0
+## Patinete E  0.8 0.00000000   0.4
+## Coche       0.6 0.60000000   0.0
+## 
+## $vflujos.netos
+##       Moto Patinete E      Coche 
+## -1.3466667  0.5466667  0.8000000 
+## 
+## $tablarelacionsupera
+##            Moto Patinete E Coche
+## Moto        0.5        0.0   0.0
+## Patinete E  1.0        0.5   0.0
+## Coche       1.0        1.0   0.5
+\end{verbatim}
+
+Representar en un grafo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qgraph}\SpecialCharTok{::}\FunctionTok{qgraph}\NormalTok{(salMPrometheeII}\SpecialCharTok{$}\NormalTok{tablarelacionsupera)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+De nuevo, ir en coche domina a todos y el patinete domina a la moto. La
+moto no domina a ninguna alternativa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{order}\NormalTok{(salMPrometheeII}\SpecialCharTok{$}\NormalTok{vflujos.netos,}\AttributeTok{decreasing =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 2 1
+\end{verbatim}
+
+Me dice que la alternativa 3 (ir en coche) es la mejor, seguido de ir en
+patín y por último, la moto.
+
+\hypertarget{representaciuxf3n-gruxe1fica-de-las-funciones-de-preferencia}{%
+\subsection{Representación gráfica de las funciones de
+preferencia}\label{representaciuxf3n-gruxe1fica-de-las-funciones-de-preferencia}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fpref.criterio\_usual\_di }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(di) \{}
+              \CommentTok{\#di = vaj{-}vah;}
+    \ControlFlowTok{if}\NormalTok{ (di }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{      res}\OtherTok{=} \DecValTok{0}\NormalTok{;}
+\NormalTok{      \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        res}\OtherTok{=} \DecValTok{1}\NormalTok{;}
+\NormalTok{      \}}
+       \FunctionTok{return}\NormalTok{(res) ;}
+\NormalTok{  \}}
+\end{Highlighting}
+\end{Shaded}
+
+Representación Gráfica de las funciones de preferencias
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{ ,}\AttributeTok{length.out=}\DecValTok{100}\NormalTok{)}
+\NormalTok{y}\OtherTok{=} \FunctionTok{sapply}\NormalTok{ (x,fpref.criterio\_usual\_di)}
+\FunctionTok{plot}\NormalTok{ (x,y, }\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"blue"}\NormalTok{ ,}\AttributeTok{main=} \StringTok{"Criterio Usua: F1 "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fpref.cuasi\_criterio\_di }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(di,qi) \{}
+              \CommentTok{\#di = vaj{-}vah;}
+    \ControlFlowTok{if}\NormalTok{ (di }\SpecialCharTok{\textless{}=}\NormalTok{ qi) \{}
+\NormalTok{      res}\OtherTok{=} \DecValTok{0}\NormalTok{;}
+\NormalTok{      \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        res}\OtherTok{=} \DecValTok{1}\NormalTok{;}
+\NormalTok{      \}}
+       \FunctionTok{return}\NormalTok{(res) ;}
+\NormalTok{  \}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{ ,}\AttributeTok{length.out=}\DecValTok{100}\NormalTok{)}
+\NormalTok{y}\OtherTok{=} \FunctionTok{sapply}\NormalTok{ (x,}\ControlFlowTok{function}\NormalTok{(xx) }\FunctionTok{fpref.cuasi\_criterio\_di}\NormalTok{(xx,}\AttributeTok{qi=}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{ (x,y, }\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"blue"}\NormalTok{ ,}\AttributeTok{main=} \StringTok{"Cuasi Criterio. Lineal: F2 (con qi=2)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fpref.criterio\_preflineal\_di }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(di,pi) \{}
+              \CommentTok{\#di = vaj{-}vah;}
+    \ControlFlowTok{if}\NormalTok{ (di }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{      res}\OtherTok{=} \DecValTok{0}\NormalTok{;}
+\NormalTok{      \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (di}\SpecialCharTok{\textgreater{}}\NormalTok{pi) \{}
+\NormalTok{        res}\OtherTok{=} \DecValTok{1}\NormalTok{;}
+\NormalTok{      \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        res}\OtherTok{=}\NormalTok{di}\SpecialCharTok{/}\NormalTok{pi;}
+\NormalTok{      \}}
+       \FunctionTok{return}\NormalTok{(res) ;}
+\NormalTok{  \}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{ ,}\AttributeTok{length.out=}\DecValTok{100}\NormalTok{)}
+\NormalTok{y}\OtherTok{=} \FunctionTok{sapply}\NormalTok{ (x,}\ControlFlowTok{function}\NormalTok{(xx) }\FunctionTok{fpref.criterio\_preflineal\_di}\NormalTok{(xx,}\AttributeTok{pi=}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{ (x,y, }\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"blue"}\NormalTok{ ,}\AttributeTok{main=} \StringTok{"Criterio}
+\StringTok{      Pref. Lineal: F3 (con pi=2)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fpref.criterio\_nivel\_di }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(di,qi,pi) \{}
+              \CommentTok{\#di = vaj{-}vah;}
+    \ControlFlowTok{if}\NormalTok{ (di }\SpecialCharTok{\textless{}=}\NormalTok{ qi) \{}
+\NormalTok{      res}\OtherTok{=} \DecValTok{0}\NormalTok{;}
+\NormalTok{      \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (di}\SpecialCharTok{\textgreater{}}\NormalTok{pi) \{}
+\NormalTok{        res}\OtherTok{=} \DecValTok{1}\NormalTok{;}
+\NormalTok{      \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        res}\OtherTok{=}\FloatTok{0.5}\NormalTok{;}
+\NormalTok{      \}}
+       \FunctionTok{return}\NormalTok{(res) ;}
+\NormalTok{  \}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{ ,}\AttributeTok{length.out=}\DecValTok{100}\NormalTok{)}
+\NormalTok{y}\OtherTok{=} \FunctionTok{sapply}\NormalTok{ (x,}\ControlFlowTok{function}\NormalTok{(xx) }\FunctionTok{fpref.criterio\_nivel\_di}\NormalTok{(xx,}\AttributeTok{pi=}\DecValTok{4}\NormalTok{,}\AttributeTok{qi=}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{ (x,y, }\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"blue"}\NormalTok{ ,}\AttributeTok{main=} \StringTok{"Criterio}
+\StringTok{      Nivel: F4 (con qi=2 y pi=4)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fpref.criterio\_preflineal\_indif\_di }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(di,qi,pi) \{}
+              \CommentTok{\#di = vaj{-}vah;}
+    \ControlFlowTok{if}\NormalTok{ (di }\SpecialCharTok{\textless{}=}\NormalTok{ qi) \{}
+\NormalTok{      res}\OtherTok{=} \DecValTok{0}\NormalTok{;}
+\NormalTok{      \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (di}\SpecialCharTok{\textgreater{}}\NormalTok{pi) \{}
+\NormalTok{        res}\OtherTok{=} \DecValTok{1}\NormalTok{;}
+\NormalTok{      \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        res}\OtherTok{=}\NormalTok{(di}\SpecialCharTok{{-}}\NormalTok{qi)}\SpecialCharTok{/}\NormalTok{(pi}\SpecialCharTok{{-}}\NormalTok{qi);}
+\NormalTok{      \}}
+       \FunctionTok{return}\NormalTok{(res) ;}
+\NormalTok{  \}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{ ,}\AttributeTok{length.out=}\DecValTok{100}\NormalTok{)}
+\NormalTok{y}\OtherTok{=} \FunctionTok{sapply}\NormalTok{ (x,}\ControlFlowTok{function}\NormalTok{(xx) }\FunctionTok{fpref.criterio\_preflineal\_indif\_di}\NormalTok{(xx,}\AttributeTok{pi=}\DecValTok{4}\NormalTok{,}\AttributeTok{qi=}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{ (x,y, }\AttributeTok{type=}\StringTok{"l"}\NormalTok{, }\AttributeTok{col=}\StringTok{"blue"}\NormalTok{ ,}\AttributeTok{main=} \StringTok{"Criterio Pref. Lineal Indiferencia: F5 (con qi=2 y pi=4)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+\hypertarget{muxe9todo-electre}{%
+\section{Método Electre}\label{muxe9todo-electre}}
+
+Método electre:
+
+\begin{itemize}
+\tightlist
+\item
+  D
+\item
+  Alpha
+\item
+  Pesos de comparación, podríamos ponerlos todos infinitos
+\end{itemize}
+
+\hypertarget{primera-iteraciuxf3n}{%
+\subsection{Primera iteración}\label{primera-iteraciuxf3n}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salElectre}\OtherTok{=}\FunctionTok{multicriterio.metodoELECTRE\_I}\NormalTok{(tabdec.X,}
+                      \AttributeTok{pesos.criterios =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\SpecialCharTok{/}\DecValTok{5}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{5}\NormalTok{,}\DecValTok{2}\SpecialCharTok{/}\DecValTok{5}\NormalTok{),}
+                      \AttributeTok{nivel.concordancia.minimo.alpha =} \FloatTok{0.7}\NormalTok{,}
+                      \AttributeTok{no.se.compensan =} \FunctionTok{c}\NormalTok{(}\ConstantTok{Inf}\NormalTok{,}\DecValTok{55}\NormalTok{,}\ConstantTok{Inf}\NormalTok{),}
+                      \AttributeTok{que.alternativas =} \ConstantTok{TRUE}
+\NormalTok{                                   )}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"El núcleo es: "}\NormalTok{,salElectre}\SpecialCharTok{$}\NormalTok{nucleo\_aprox)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## El núcleo es:  2 3
+\end{verbatim}
+
+Es decir, no conseguimos distinguir qué alternativa es mejor, si ir en
+patinete o en coche.
+
+Representación del grafo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qgraph}\SpecialCharTok{::}\FunctionTok{qgraph}\NormalTok{(salElectre}\SpecialCharTok{$}\NormalTok{relacion.dominante)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+Vamos a realizar iteraciones de este método para ver si conseguimos
+establecer una relación de preferencia entre un método y otro.
+
+\hypertarget{segunda-iteraciuxf3n}{%
+\subsection{Segunda iteración}\label{segunda-iteraciuxf3n}}
+
+En la siguiente iteración:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salElectrei2}\OtherTok{=}\FunctionTok{multicriterio.metodoELECTRE\_I}\NormalTok{(tabdec.X,}
+                      \AttributeTok{pesos.criterios =}\NormalTok{ wi,}
+                      \AttributeTok{nivel.concordancia.minimo.alpha =} \FloatTok{0.7}\NormalTok{,}
+                      \AttributeTok{no.se.compensan =} \FunctionTok{c}\NormalTok{(}\ConstantTok{Inf}\NormalTok{,}\DecValTok{55}\NormalTok{,}\ConstantTok{Inf}\NormalTok{),}
+                      \AttributeTok{que.alternativas =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+                                   
+\NormalTok{salElectrei2}\SpecialCharTok{$}\NormalTok{nucleo\_aprox}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Patinete E      Coche 
+##          1          2
+\end{verbatim}
+
+El núcleo es el mismo que antes. Tengo que bajar alpha
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qgraph}\SpecialCharTok{::}\FunctionTok{qgraph}\NormalTok{(salElectrei2}\SpecialCharTok{$}\NormalTok{relacion.dominante)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+Ambas alternativas siguen siendo equivalentes.
+
+\hypertarget{tercera-iteracciuxf3n}{%
+\subsection{Tercera iteracción}\label{tercera-iteracciuxf3n}}
+
+En la siguiente iteración:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salElectrei3}\OtherTok{=}\FunctionTok{multicriterio.metodoELECTRE\_I}\NormalTok{(tabdec.X,}
+                      \AttributeTok{pesos.criterios =}\NormalTok{ wi,}
+                      \AttributeTok{nivel.concordancia.minimo.alpha =} \FloatTok{0.6}\NormalTok{, }\CommentTok{\# 0.68, 0.60}
+                      \AttributeTok{no.se.compensan =} \FunctionTok{c}\NormalTok{(}\ConstantTok{Inf}\NormalTok{,}\DecValTok{55}\NormalTok{,}\ConstantTok{Inf}\NormalTok{),}
+                      \AttributeTok{que.alternativas =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+                                   
+\NormalTok{salElectrei3}\SpecialCharTok{$}\NormalTok{nucleo\_aprox}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Coche 
+##     2
+\end{verbatim}
+
+Ahora, el núcleo es la alternativa 2, es decir: ir en coche.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qgraph}\SpecialCharTok{::}\FunctionTok{qgraph}\NormalTok{(salElectrei3}\SpecialCharTok{$}\NormalTok{relacion.dominante)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+Por tanto, según el método electre, la mejor alternativa es: IR EN
+COCHE.
+
+\hypertarget{cuxe1lculos-en-el-muxe9todo-electre-i-la-representaciuxf3n-de-las-tables-de-test-con-kableextra}{%
+\subsection{Cálculos en el método electre I La representación de las
+tables de test con
+KableExtra}\label{cuxe1lculos-en-el-muxe9todo-electre-i-la-representaciuxf3n-de-las-tables-de-test-con-kableextra}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\FunctionTok{library}\NormalTok{(stringr)}
+\NormalTok{salke }\OtherTok{=} \FunctionTok{func\_ELECTRE\_Completo}\NormalTok{(salElectre)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salke}\SpecialCharTok{$}\NormalTok{MIndices}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $MIndices
+##   Alts Inds    A1    A2    A3
+## 1   A1   I+           2      
+## 2   A1   I= 1,2,3           3
+## 3   A1   I-         1,3   1,2
+## 4   A2   I+   1,3           3
+## 5   A2   I=       1,2,3      
+## 6   A2   I-     2         1,2
+## 7   A3   I+   1,2   1,2      
+## 8   A3   I=     3       1,2,3
+## 9   A3   I-           3      
+## 
+## $KE
+## \begin{table}
+## \centering
+## \begin{tabular}{>{\raggedright\arraybackslash}p{4em}>{\raggedright\arraybackslash}p{4em}|>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
+## \toprule
+## \multicolumn{1}{c}{\textcolor{blue}{Alts}} & \multicolumn{1}{c}{\textcolor{blue}{Inds}} & \multicolumn{1}{c}{\textcolor{blue}{A1}} & \multicolumn{1}{c}{\textcolor{blue}{A2}} & \multicolumn{1}{c}{\textcolor{blue}{A3}}\\
+## \midrule
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{I+}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{2}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{}}}\\
+## \cmidrule{2-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{I=}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{1,2,3}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{3}}}\\
+## \cmidrule{2-5}
+## \multirow{-3}{4em}{\raggedright\arraybackslash \cellcolor{white}{\textcolor{blue}{\textbf{\multicolumn{1}{c}{\textbf{A1}}}}}} & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{I-}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{1,3}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{1,2}}}\\
+## \cmidrule{1-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{I+}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{1,3}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{3}}}\\
+## \cmidrule{2-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{I=}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{1,2,3}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{}}}\\
+## \cmidrule{2-5}
+## \multirow{-3}{4em}{\raggedright\arraybackslash \cellcolor{white}{\textcolor{blue}{\textbf{\multicolumn{1}{c}{\textbf{A2}}}}}} & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{I-}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{2}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{1,2}}}\\
+## \cmidrule{1-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{I+}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{1,2}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{1,2}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{}}}\\
+## \cmidrule{2-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{I=}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{3}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{1,2,3}}}\\
+## \cmidrule{2-5}
+## \multirow{-3}{4em}{\raggedright\arraybackslash \cellcolor{white}{\textcolor{blue}{\textbf{\multicolumn{1}{c}{\textbf{A3}}}}}} & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{I-}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{3}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{}}}\\
+## \bottomrule
+## \multicolumn{5}{l}{\rule{0pt}{1em}ELECTRE: Conjunto de Índices}\\
+## \end{tabular}
+## \end{table}
+\end{verbatim}
+
+Comentarios respecto a la alternativa 1 A1: Ir en moto
+
+\begin{itemize}
+\tightlist
+\item
+  Gana a la la alternativa 2 (ir en patinete) en el criterio 2 (precio),
+  por lo tanto, es peor que ir en patinete en los criterios 1 y 3
+  (seguridad y condiciones de viaje)
+\item
+  Gana a la la alternativa 3 (ir en coche) en el criterio 3 (condiciones
+  de viaje), y por tanto , es peor que ir en coche en los criteios 1 y 2
+  (seguridad y precio)
+\item
+  No es igual a ninguna alternativa en ningún criterio
+\end{itemize}
+
+La alternativa 2, A2: Ir en patín
+
+\begin{itemize}
+\tightlist
+\item
+  A1 no supera a A2 en los criterios 1, 3 y 5
+\item
+  En los criterios 1,3,5 a1 peor a2
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salke}\SpecialCharTok{$}\NormalTok{TConcordancia}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $MIndices
+##   Alts Inds  A1   A2     A3
+## 1   A1  Ijk 1.0 0.20 0.4000
+## 2   A1 IGjk NaN 0.25 0.0000
+## 3   A1   TC 0.0 0.00 0.0000
+## 4   A2  Ijk 0.8 1.00 0.4000
+## 5   A2 IGjk 4.0  NaN 0.6667
+## 6   A2   TC 1.0 0.00 0.0000
+## 7   A3  Ijk 1.0 0.60 1.0000
+## 8   A3 IGjk Inf 1.50    NaN
+## 9   A3   TC 1.0 0.00 0.0000
+## 
+## $KE
+## <table class="table" style="margin-left: auto; margin-right: auto;border-bottom: 0;">
+##  <thead>
+##   <tr>
+##    <th style="text-align:left;color: blue !important;text-align: center;"> Alts </th>
+##    <th style="text-align:left;color: blue !important;text-align: center;"> Inds </th>
+##    <th style="text-align:left;color: blue !important;text-align: center;"> A1 </th>
+##    <th style="text-align:left;color: blue !important;text-align: center;"> A2 </th>
+##    <th style="text-align:left;color: blue !important;text-align: center;"> A3 </th>
+##   </tr>
+##  </thead>
+## <tbody>
+##   <tr>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: blue !important;background-color: white !important;"> A1 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: red !important;border-right:1px solid;"> Ijk </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 10em; "> 1 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 10em; "> 0.2 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 10em; "> 0.4 </td>
+##   </tr>
+##   <tr>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: blue !important;background-color: white !important;"> A1 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: red !important;border-right:1px solid;"> IGjk </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 10em; "> NaN </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 10em; "> 0.25 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 10em; "> 0 </td>
+##   </tr>
+##   <tr>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: blue !important;background-color: white !important;"> A1 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: red !important;border-right:1px solid;"> TC </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 10em; "> \cellcolor{white}{\textcolor{black}{F}} </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 10em; "> \cellcolor{white}{\textcolor{black}{F}} </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 10em; "> \cellcolor{white}{\textcolor{black}{F}} </td>
+##   </tr>
+##   <tr>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: blue !important;background-color: white !important;"> A2 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: red !important;border-right:1px solid;"> Ijk </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 10em; "> 0.8 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 10em; "> 1 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 10em; "> 0.4 </td>
+##   </tr>
+##   <tr>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: blue !important;background-color: white !important;"> A2 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: red !important;border-right:1px solid;"> IGjk </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 10em; "> 4 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 10em; "> NaN </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 10em; "> 0.6667 </td>
+##   </tr>
+##   <tr>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: blue !important;background-color: white !important;"> A2 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: red !important;border-right:1px solid;"> TC </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 10em; "> \cellcolor{blue}{\textcolor{white}{T}} </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 10em; "> \cellcolor{white}{\textcolor{black}{F}} </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 10em; "> \cellcolor{white}{\textcolor{black}{F}} </td>
+##   </tr>
+##   <tr>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: blue !important;background-color: white !important;"> A3 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: red !important;border-right:1px solid;"> Ijk </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 10em; "> 1 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 10em; "> 0.6 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(128, 128, 128, 0.2) !important;text-align: center;width: 10em; "> 1 </td>
+##   </tr>
+##   <tr>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: blue !important;background-color: white !important;"> A3 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: red !important;border-right:1px solid;"> IGjk </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 10em; "> Inf </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 10em; "> 1.5 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(179, 179, 179, 0.2) !important;text-align: center;width: 10em; "> NaN </td>
+##   </tr>
+##   <tr>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: blue !important;background-color: white !important;"> A3 </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 4em; font-weight: bold;color: red !important;border-right:1px solid;"> TC </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 10em; "> \cellcolor{blue}{\textcolor{white}{T}} </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 10em; "> \cellcolor{white}{\textcolor{black}{F}} </td>
+##    <td style="text-align:left;font-weight: bold;background-color: rgba(230, 230, 230, 0.2) !important;text-align: center;width: 10em; "> \cellcolor{white}{\textcolor{black}{F}} </td>
+##   </tr>
+## </tbody>
+## <tfoot><tr><td style="padding: 0; " colspan="100%">
+## <sup></sup> ELECTRE: Test Concordancia</td></tr></tfoot>
+## </table>
+\end{verbatim}
+
+Notación:
+
+\begin{itemize}
+\tightlist
+\item
+  F= NO PASA EL TEST DE CONCORDANCIA
+\item
+  RESULTADO AZUL: PAREJAS QUE PASAN EL TEST DE CONCORDANCIA
+\end{itemize}
+
+Sólo pasan el test de corcondancia:
+
+\begin{itemize}
+\tightlist
+\item
+  A2SA1: Ir en patín supera a ir en moto
+\item
+  A3SA1: Ir en coche supera a ir en moto
+\item
+  A3SA2: Ir en coche supera a ir en patin
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salke}\SpecialCharTok{$}\NormalTok{TDiscordancia}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $MIndices
+##   Alts Inds    A1               A2               A3
+## 1   A1   I-                    1,3              1,2
+## 2   A1  Djk       270(Inf),20(Inf) 370(Inf),115(55)
+## 3   A1   TD     1                1                0
+## 4   A2   I-     2                               1,2
+## 5   A2  Djk 8(55)                  100(Inf),123(55)
+## 6   A2   TD     1                1                0
+## 7   A3   I-                      3                 
+## 8   A3  Djk  <NA>          20(Inf)                 
+## 9   A3   TD     1                1                1
+## 
+## $KE
+## \begin{table}
+## \centering
+## \begin{tabular}{>{\raggedright\arraybackslash}p{4em}>{\raggedright\arraybackslash}p{4em}|>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
+## \toprule
+## \multicolumn{1}{c}{\textcolor{blue}{Alts}} & \multicolumn{1}{c}{\textcolor{blue}{Inds}} & \multicolumn{1}{c}{\textcolor{blue}{A1}} & \multicolumn{1}{c}{\textcolor{blue}{A2}} & \multicolumn{1}{c}{\textcolor{blue}{A3}}\\
+## \midrule
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{I-}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{1,3}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{1,2}}}\\
+## \cmidrule{2-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{Djk}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{270(Inf),20(Inf)}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{370(Inf),115(55)}}}\\
+## \cmidrule{2-5}
+## \multirow{-3}{4em}{\raggedright\arraybackslash \cellcolor{white}{\textcolor{blue}{\textbf{\multicolumn{1}{c}{\textbf{A1}}}}}} & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{TD}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{black}{F}}}}\\
+## \cmidrule{1-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{I-}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{2}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{1,2}}}\\
+## \cmidrule{2-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{Djk}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{8(55)}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{100(Inf),123(55)}}}\\
+## \cmidrule{2-5}
+## \multirow{-3}{4em}{\raggedright\arraybackslash \cellcolor{white}{\textcolor{blue}{\textbf{\multicolumn{1}{c}{\textbf{A2}}}}}} & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{TD}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{black}{F}}}}\\
+## \cmidrule{1-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{I-}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{3}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{}}}\\
+## \cmidrule{2-5}
+##  & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{Djk}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{NA}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{20(Inf)}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{}}}\\
+## \cmidrule{2-5}
+## \multirow{-3}{4em}{\raggedright\arraybackslash \cellcolor{white}{\textcolor{blue}{\textbf{\multicolumn{1}{c}{\textbf{A3}}}}}} & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{TD}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{white}{T}}}}\\
+## \bottomrule
+## \multicolumn{5}{l}{\rule{0pt}{1em}ELECTRE: Test Discordancia: vd=(Inf,55,Inf)}\\
+## \end{tabular}
+## \end{table}
+\end{verbatim}
+
+Notación:
+
+\begin{itemize}
+\tightlist
+\item
+  F= NO PASA EL TEST DE DISCORDANCIA
+\item
+  RESULTADO AZUL: PAREJAS QUE PASAN EL TEST DE DISCORDANCIA
+\item
+  LA DIAGONAL SE SUPERA ENTERA PERO NO VA A INFLUIR
+\end{itemize}
+
+Las alternativas que pasaban el test de concordancia también pasan el de
+discordancia, son:
+
+\begin{itemize}
+\tightlist
+\item
+  A2SA1: Ir en patín supera a ir en moto
+\item
+  A3SA1: Ir en coche supera a ir en moto
+\item
+  A3SA2: Ir en coche supera a ir en patin
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salke}\SpecialCharTok{$}\NormalTok{TSuperacion}\SpecialCharTok{$}\NormalTok{KE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\centering
+\begin{tabular}{>{\raggedright\arraybackslash}p{4em}>{\raggedright\arraybackslash}p{4em}|>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
+\toprule
+\multicolumn{1}{c}{\textcolor{blue}{Alts}} & \multicolumn{1}{c}{\textcolor{blue}{Inds}} & \multicolumn{1}{c}{\textcolor{blue}{A1}} & \multicolumn{1}{c}{\textcolor{blue}{A2}} & \multicolumn{1}{c}{\textcolor{blue}{A3}}\\
+\midrule
+ & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{TC}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{\textcolor{black}{F}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{\textcolor{black}{F}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{\textcolor{black}{F}}}}\\
+\cmidrule{2-5}
+ & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{TD}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{\textcolor{black}{F}}}}\\
+\cmidrule{2-5}
+\multirow{-3}{4em}{\raggedright\arraybackslash \cellcolor{white}{\textcolor{blue}{\textbf{\multicolumn{1}{c}{\textbf{A1}}}}}} & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{RSup}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{black}{F}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{black}{F}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{black}{F}}}}\\
+\cmidrule{1-5}
+ & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{TC}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{\textcolor{black}{F}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{\textcolor{black}{F}}}}\\
+\cmidrule{2-5}
+ & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{TD}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{\textcolor{black}{F}}}}\\
+\cmidrule{2-5}
+\multirow{-3}{4em}{\raggedright\arraybackslash \cellcolor{white}{\textcolor{blue}{\textbf{\multicolumn{1}{c}{\textbf{A2}}}}}} & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{RSup}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{black}{F}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{black}{F}}}}\\
+\cmidrule{1-5}
+ & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{TC}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{\textcolor{black}{F}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{808080}{\textbf{\textcolor{black}{F}}}}\\
+\cmidrule{2-5}
+ & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{TD}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{B3B3B3}{\textbf{\textcolor{white}{T}}}}\\
+\cmidrule{2-5}
+\multirow{-3}{4em}{\raggedright\arraybackslash \cellcolor{white}{\textcolor{blue}{\textbf{\multicolumn{1}{c}{\textbf{A3}}}}}} & \textcolor{red}{\textbf{\multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{RSup}}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{white}{T}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{black}{F}}}} & \multicolumn{1}{c}{\cellcolor[HTML]{E6E6E6}{\textbf{\textcolor{black}{F}}}}\\
+\bottomrule
+\multicolumn{5}{l}{\rule{0pt}{1em}ELECTRE: Relación Superación: alpha = 0.7, vd=(Inf,55,Inf)}\\
+\end{tabular}
+\end{table}
+
+CONCLUSIÓN:
+
+\begin{itemize}
+\tightlist
+\item
+  A2SA1: Ir en patín supera a ir en moto
+\item
+  A3SA1: Ir en coche supera a ir en moto
+\item
+  A3SA2: Ir en coche supera a ir en patin
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salke}\SpecialCharTok{$}\NormalTok{Grafo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   De A
+## 1  2 1
+## 2  3 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qgraph}\SpecialCharTok{::}\FunctionTok{qgraph}\NormalTok{(salke}\SpecialCharTok{$}\NormalTok{Grafo)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea2MartaVenegas_files/figure-latex/unnamed-chunk-34-1.pdf}
+
+El núcleo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salke}\SpecialCharTok{$}\NormalTok{Nucleo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Patinete E      Coche 
+##          2          3
+\end{verbatim}
+
+Por tanto, la mejor alternativa es la 3, ir en coche. Segundo, ir en
+patinete y por último, ir en moto sería la última alternativa a elegir.
+
+\hypertarget{versiones}{%
+\section{VERSIONES}\label{versiones}}
+
+\hypertarget{matriz-de-comparaciuxf3n-entre-criterios}{%
+\subsection{Matriz de comparación entre
+criterios}\label{matriz-de-comparaciuxf3n-entre-criterios}}
+
+En la versión 1, teníamos la siguiente matriz de comparación entre
+criterios:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Criterios & Seguridad & Condiciones & Precio \\
+\midrule
+\endhead
+Seguridad & 1 & 9 & 7 \\
+Condiciones & 1/9 & 1 & 3 \\
+Precio & 1/7 & 1/3 & 1 \\
+\bottomrule
+\end{longtable}
+
+Con estos datos, obtenemos una inconsistencia del 19.6\%. Por ello, y
+trás haber revisado los pesos, hemos obtenido la siguiente matriz de
+comparación:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Criterios & Seguridad & Condiciones & Precio \\
+\midrule
+\endhead
+Seguridad & 1 & 9 & 7 \\
+Condiciones & 1/9 & 1 & 2 \\
+Precio & 1/7 & 1/2 & 1 \\
+\bottomrule
+\end{longtable}
+
+Ahora la inconsistencia es menor del 10\%
+
+\hypertarget{matriz-de-comparaciuxf3n-entre-alternativas-seguxfan-criterios}{%
+\subsection{Matriz de comparación entre alternativas según
+criterios}\label{matriz-de-comparaciuxf3n-entre-alternativas-seguxfan-criterios}}
+
+En el criterio \emph{seguridad}, teníamos una inconsistencia del 9\%
+inicialmente, con la siguiente matríz de comparaciones:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Seguridad & Moto & Patín & Coche \\
+\midrule
+\endhead
+Moto & 1 & 1/3 & 1/7 \\
+Patín & 3 & 1 & 1/5 \\
+Coche & 7 & 5 (4*) & 1 \\
+\bottomrule
+\end{longtable}
+
+Por tanto, cambiando la matriz obtenemos una inconsistencia del 5.1\%:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Seguridad & Moto & Patín & Coche \\
+\midrule
+\endhead
+Moto & 1 & 1/3 & 1/7 \\
+Patín & 3 & 1 & 1/4 \\
+Coche & 7 & 4 & 1 \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{muxe9todo-electre-1}{%
+\subsection{Método electre}\label{muxe9todo-electre-1}}
+
+Inicialmente, con unos pesos \(w_i=(0.5,0.25,0.25\) y aplicando el
+método Electre, directamente en la primera iteracción obteníamos que el
+núcleo era la altertativa: \emph{ir en coche}. Esto ocurría a pesar de
+probar con distintos valores iniciales de \(\alpha\). Por ello, probamos
+con los pesos \(w_i=(0.4,0.3,0.3\) y seguía ocurriendo lo mismo.
+Finalmente, elegimos los pesos siguientes \(w_i=(0.4,0.2,0.4\), donde al
+menos teníamos que realizar dos iteraciones para poder elegir una
+alternativa.
+
+\end{document}
