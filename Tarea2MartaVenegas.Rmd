@@ -557,6 +557,11 @@ Según este método, la ordenación de las alternativas vuelve a ser la siguient
 2. Ir en patinete eléctrico
 3. Ir en moto
 
+# Solución final
+
+Según todos los métodos, llegamos a lo siguiente: la alternativa elegida como medio de trasnporte en Madrid y trayectos a Ciudad Real es ir en coche. Como segunda alternativa en caso de que finalmente no se dispusiera de coche (por ejemplo, no encontrar una plaza de garaje y no poder tener un coche en el centro de Madrid), la alternativa a considerar sería ir en patín eléctrico y por último, alquilar una moto.
+
+
 # VERSIONES
 
 ## Matriz de comparación entre criterios
