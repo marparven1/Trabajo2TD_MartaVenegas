@@ -26,7 +26,7 @@ source("ScriptsNecesarios/teoriadecision_funciones_multicriterio.R")
 source("ScriptsNecesarios/teoriadecision_funciones_multicriterio_utiles.R")
 ```
 
-## Enunciado
+# Enunciado
 
 Luis hace su último año de residencia de anestesia en el hospital General Universitario de Ciudad Real, pero tiene que ir un mes a trabajar en el hospital Asepeyo en un pueblo a las afueras de Madrid, por lo que va a vivirá durante un mes en Madrid Capital, pero debe ir y volver a Ciudad Real 3 veces para hacer guardias.
 
@@ -126,7 +126,7 @@ Para aplicar el método electre, iniciar el proceso con $\alpha=0.75$ y d=($\inf
 
 Utilizar los métodos Electre y Promethee para ordenar las alternativas y obtener la mejor decisión.
 
-## Solución con paquete AHP
+# Solución con paquete AHP
 
 ```{r}
 #devtools::install_github("gluc/ahp", build_vignettes = TRUE)
@@ -236,115 +236,6 @@ order(salMPrometheeII$vflujos.netos,decreasing = T)
 ```
 
 Me dice que la alternativa 3 (ir en coche) es la mejor, seguido de ir en patín y por último, la moto.
-
-
-
-
-
-## Representación gráfica de las funciones de preferencia
-
-
-```{r}
-fpref.criterio_usual_di = function(di) {
-              #di = vaj-vah;
-    if (di <= 0) {
-      res= 0;
-      } else {
-        res= 1;
-      }
-       return(res) ;
-  }
-```
-
-Representación Gráfica de las funciones de preferencias
-
-```{r}
-x= seq(-10,10 ,length.out=100)
-y= sapply (x,fpref.criterio_usual_di)
-plot (x,y, type="l", col="blue" ,main= "Criterio Usua: F1 ")
-```
-
-```{r}
-fpref.cuasi_criterio_di = function(di,qi) {
-              #di = vaj-vah;
-    if (di <= qi) {
-      res= 0;
-      } else {
-        res= 1;
-      }
-       return(res) ;
-  }
-```
-
-```{r}
-x= seq(-10,10 ,length.out=100)
-y= sapply (x,function(xx) fpref.cuasi_criterio_di(xx,qi=2))
-plot (x,y, type="l", col="blue" ,main= "Cuasi Criterio. Lineal: F2 (con qi=2)")
-```
-
-```{r}
-fpref.criterio_preflineal_di = function(di,pi) {
-              #di = vaj-vah;
-    if (di <= 0) {
-      res= 0;
-      } else if (di>pi) {
-        res= 1;
-      } else {
-        res=di/pi;
-      }
-       return(res) ;
-  }
-```
-
-```{r}
-x= seq(-10,10 ,length.out=100)
-y= sapply (x,function(xx) fpref.criterio_preflineal_di(xx,pi=2))
-plot (x,y, type="l", col="blue" ,main= "Criterio
-      Pref. Lineal: F3 (con pi=2)")
-```
-
-```{r}
-fpref.criterio_nivel_di = function(di,qi,pi) {
-              #di = vaj-vah;
-    if (di <= qi) {
-      res= 0;
-      } else if (di>pi) {
-        res= 1;
-      } else {
-        res=0.5;
-      }
-       return(res) ;
-  }
-```
-
-```{r}
-x= seq(-10,10 ,length.out=100)
-y= sapply (x,function(xx) fpref.criterio_nivel_di(xx,pi=4,qi=2))
-plot (x,y, type="l", col="blue" ,main= "Criterio
-      Nivel: F4 (con qi=2 y pi=4)")
-```
-
-```{r}
-fpref.criterio_preflineal_indif_di = function(di,qi,pi) {
-              #di = vaj-vah;
-    if (di <= qi) {
-      res= 0;
-      } else if (di>pi) {
-        res= 1;
-      } else {
-        res=(di-qi)/(pi-qi);
-      }
-       return(res) ;
-  }
-```
-
-```{r}
-x= seq(-10,10 ,length.out=100)
-y= sapply (x,function(xx) fpref.criterio_preflineal_indif_di(xx,pi=4,qi=2))
-plot (x,y, type="l", col="blue" ,main= "Criterio Pref. Lineal Indiferencia: F5 (con qi=2 y pi=4)")
-```
-
-
 
 
 
@@ -460,7 +351,7 @@ Comentarios respecto a la alternativa 1 A1: Ir en moto
 
 Comentarios respecto A2 y A3: 
 
-- La alternativa A2 (ir en patinete), gana a la alternativa 3 en el criterio 3 ()
+- La alternativa A2 (ir en patinete), gana (es mejor) a la alternativa 3 (ir en moto) en el criterio 3 (condiciones de viaje), y por tanto, es peor en los criterios 1 (seguridad) y 2 (precio)
 
 
 
@@ -499,7 +390,10 @@ Las alternativas que pasaban el test de concordancia también pasan el de discor
 - A3SA1: Ir en coche supera a ir en moto
 
 
+Tambien hay varios pares de alternativas que pasan el test de discordancia, pero que no pasaban el de concordancia:
 
+- A1SA2: Ir en moto supera a ir en coche (pasan el test de discordancia)
+- A3SA2: Ir en coche supera a ir en patin eléctrico
 
 ```{r}
 salke$TSuperacion$KE
@@ -539,6 +433,91 @@ Por tanto, la mejor alternativa es la 3, ir en coche. Segundo, ir en patinete y 
 
 
 
+
+# Análisis paramétrico ó de sensibilidad. Método axiomático de Arrow y Raymond
+
+
+Vamos a estudiar como cambian las ordenaciones de las alternativas para los distintos valores de $\alpha$.
+
+La matriz de decisión es la siguiente:
+
+```{r}
+tabdec.X = multicriterio.crea.matrizdecision(
+  c(80,-(220+195),90,
+   350,-(200+28+195),110,
+   450,-(200+100),90),
+  numalternativas=3,
+  numcriterios=3,
+  v.nombresalt=c("Moto","Patinete E","Coche"),
+  v.nombrescri = c("Seguridad","Precio","Condiciones")
+                                                    
+)
+tabdec.X
+```
+
+```{r}
+intalpha = seq(1,2,0.1)
+sols = vector("list",length(intalpha)) 
+for (i in 1:length(intalpha)) {
+  pej7_i = tabdec.X
+  pej7_i[1,] = pej7_i[1,] * intalpha[i]
+  sej7_i = multicriterio.metodoaxiomatico.ArrowRaymond(pej7_i)
+  sols[[i]] = sej7_i$alternativasordenadas
+} 
+sols
+```
+
+Observamos que la ordenación es siempre la misma, es decir, que independientemente del valor de $\alpha \in [1,2]$, la mejor alternativa va a ser: _Coger el coche_, la segunda ir en patinete eléctrico y por último, ir en moto.
+
+
+Vamos a estudiar como varía la posición de la alternativa _Coche_ en función de los valores de alpha
+
+
+```{r}
+posiciones_Coche=rep(NA, length(intalpha ))
+
+for(i in 1:length(intalpha )){
+  posiciones_Coche[i]=which(sols[[i]]=="Coche")
+}
+
+posiciones_Coche
+```
+
+
+El coche siempre es la mejor alternativa.
+
+```{r}
+plot(intalpha,posiciones_Coche,type= "l")
+```
+
+Siempre ocupa la posición 1.
+
+# Método axiomático de Arrow  y Raymond
+```{r}
+
+
+arrow = multicriterio.crea.matrizdecision(
+  c(80,-(220+195),90,
+   350,-(200+28+195),110,
+   450,-(200+100),90),
+  numalternativas=3,
+  numcriterios=3,
+  v.nombresalt=c("Moto","Patinete E","Coche"),
+  v.nombrescri = c("Seguridad","Precio","Condiciones")
+)
+
+
+sal.arrow = multicriterio.metodoaxiomatico.ArrowRaymond(arrow)
+
+# alternativas ordenadas d mejor a peor
+sal.arrow$alternativasordenadas
+sal.arrow
+```
+
+Según este método, la ordenación de las alternativas vuelve a ser la siguiente:
+1. Ir en coche
+2. Ir en patinete eléctrico
+3. Ir en moto
 
 # VERSIONES
 
